@@ -75,8 +75,6 @@ find_package(catkin REQUIRED COMPONENTS
 #   std_msgs
 # )
 
-add_message_files(FILES name.msg)
-generate_messages(DEPENDENCIES std_msgs)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
