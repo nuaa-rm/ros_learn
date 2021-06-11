@@ -74,10 +74,10 @@ find_package(catkin REQUIRED COMPONENTS
 #   std_msgs
 # )
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 
-=======
->>>>>>> LIC
+#=======
+#>>>>>>> LIC
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
 ################################################

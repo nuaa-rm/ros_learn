@@ -75,6 +75,7 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 add_message_files(FILES name.msg)
+add_service_files(FILES topic_name.srv)
 generate_messages(DEPENDENCIES std_msgs)
 
 ################################################
