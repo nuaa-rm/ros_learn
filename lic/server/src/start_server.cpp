@@ -21,7 +21,7 @@ int main(int argc, char **argv){
 	ros::Rate loop_rate(1);
 	int count = 0;
 	while(ros::ok()){
-		
+			ros::spinOnce();
 			client::name name_msg;
 			name_msg.name="/name_info";
 			name_info_pub.publish(name_msg);
