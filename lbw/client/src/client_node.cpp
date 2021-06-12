@@ -2,9 +2,9 @@
 #include <geometry_msgs/Twist.h>
 #include <iostream>
 #include <time.h>
-
+#include <client/Time.h>
 using namespace std;
-int main()
+int main(int argc, char **argv)
 {
         time_t tt;
         time( &tt );
@@ -17,16 +17,20 @@ int main()
         // 创建节点句柄
 	ros::NodeHandle n;
 	// 创建一个Publisher，发布名为client_topic的topic，消息类型为time，队列长度10
-        ros::Publisher turtle_vel_pub = n.advertise<geometry_msgs::Time>("client_topic", 10);
+        ros::Publisher client_topic_pub = n.advertise<client::Time>("client_topic", 10);
 	// 设置循环的频率
 	ros::Rate loop_rate(1);
         while(ros::ok())
         {
         //初始化time
-        geometry_msgs::Time time;
+        client::Time time;
+        time.hour =t->tm_hour;
+        time.min  =t->tm_min; 
+        time.name ="client";
         //发布消息
-        client_topic.publish(time);
+        client_topic_pub.publish(time);
     	// 按照循环频率延时
 	loop_rate.sleep();    
         }
+        return 0;
 }

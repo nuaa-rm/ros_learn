@@ -110,8 +110,8 @@ generate_messages(DEPENDENCIES std_msgs)
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES client
-#  CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs
-   CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs turtlesim message_runtime
+
+   CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
