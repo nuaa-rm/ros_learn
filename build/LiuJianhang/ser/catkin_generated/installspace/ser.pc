@@ -1,0 +1,8 @@
+prefix=/home/dovejh/ros_learn/ros_ws/install
+
+Name: ser
+Description: Description of ser
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
