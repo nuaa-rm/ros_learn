@@ -9,7 +9,7 @@ int flag = 0;
 string aim_topic;
 
 void nameInfoCallback(const client::name::ConstPtr& msg) {
-    ROS_INFO("Subcriber Info: name:%s", msg->name.c_str());
+    ROS_INFO("Subcriber Info: name:%s Time:%d", msg->name.c_str() ,msg->test);
 }
 
 bool topicCallback(client::topic_name::Request  &req,client::topic_name::Response &res)
@@ -21,7 +21,7 @@ bool topicCallback(client::topic_name::Request  &req,client::topic_name::Respons
     return true;
 }
 
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
 	ros::init(argc, argv, "start_server");
 	ros::NodeHandle n;
 	ros::ServiceServer client_name = n.advertiseService("/show_topic", topicCallback);
