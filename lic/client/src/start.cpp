@@ -12,7 +12,7 @@ int main(int argc, char **argv) {
     ros::service::waitForService("/show_topic");
     ros::ServiceClient client_name = n.serviceClient<client::topic_name>("/show_topic");
     client::topic_name srv;
-    srv.request.name="clent0";
+    srv.request.name = "clent0";
     ROS_INFO("Call service : %s", srv.request.name.c_str());
     client_name.call(srv);
     ROS_INFO("Result : %s", srv.response.result.c_str());
