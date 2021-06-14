@@ -25,11 +25,13 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "start_server");
 	ros::NodeHandle n;
 	ros::ServiceServer client_name = n.advertiseService("/show_topic", topicCallback);
+	//ros::Subscriber name_info_sub = n.subscribe<client::name>("/client0", 10, nameInfoCallback);
 	ros::Rate loop_rate(1);
 	while(ros::ok()) {
 		ros::spinOnce();
 		if(flag == 1) {
-			ros::Subscriber name_info_sub = n.subscribe(aim_topic.c_str(), 10, nameInfoCallback);
+			ROS_INFO("aim_topic :%s", aim_topic.c_str());
+			ros::Subscriber name_info_sub = n.subscribe<client::name>("/client0", 10, nameInfoCallback);
 			flag = 0;
 		}
 		loop_rate.sleep();
