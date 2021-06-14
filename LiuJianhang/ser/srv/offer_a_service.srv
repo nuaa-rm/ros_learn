@@ -1,0 +1,5 @@
+int32 sec	
+int32 nsec
+---
+int32 sec2
+int32 msec2
