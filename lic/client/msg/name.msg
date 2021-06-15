@@ -1,2 +1,2 @@
-uint8 test
+time tim
 string name

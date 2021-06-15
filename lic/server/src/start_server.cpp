@@ -9,7 +9,7 @@ int flag = 0;
 string aim_topic;
 
 void nameInfoCallback(const client::name::ConstPtr& msg) {
-    ROS_INFO("Subcriber Info: name:%s Time:%d", msg->name.c_str() ,msg->test);
+    ROS_INFO("Subcriber Info: name:%s Time:%lld", msg->name.c_str() ,msg->tim.sec);
 }
 
 bool topicCallback(client::topic_name::Request  &req,client::topic_name::Response &res)

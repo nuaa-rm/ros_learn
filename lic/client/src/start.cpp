@@ -2,8 +2,6 @@
 #include "client/name.h"
 #include "client/topic_name.h"
 
-uint8_t tt;
-
 void nameInfoCallback(const client::name::ConstPtr& msg) {
     ROS_INFO("Subcriber Info: name:%s", msg->name.c_str());
 }
@@ -24,8 +22,7 @@ int main(int argc, char **argv) {
     while(ros::ok()) {
     	client::name name_msg;
 	name_msg.name = "client0";
-	name_msg.test = tt;
-	tt++;
+	name_msg.tim = ros::Time::now();
 	name_info_pub.publish(name_msg);
 	ROS_INFO("Publish Name Info:%s", name_msg.name.c_str());
 	loop_rate.sleep();
