@@ -1,2 +1,0 @@
-LiuJianhang/ser
--DCATKIN_DEVEL_PREFIX=/home/dovejh/ros_learn/ros_ws/devel -DCMAKE_INSTALL_PREFIX=/home/dovejh/ros_learn/ros_ws/install -G Unix Makefiles
