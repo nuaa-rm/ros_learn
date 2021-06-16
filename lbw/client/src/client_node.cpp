@@ -3,29 +3,33 @@
 #include <time.h>
 #include <geometry_msgs/Twist.h>
 #include "client/Time.h"
-
+#include "client/show.h"
+#include <ros/time.h>
 using namespace std;
 int main(int argc, char **argv)
 {
     // ROS节点初始化
+    ros::init(argc,argv,"timer");
     ros::init(argc, argv, "client");
     // 创建节点句柄
     ros::NodeHandle n;
     // 创建一个Publisher，发布名为client_topic的topic，消息类型为time，队列长度10
     ros::Publisher client_topic_pub = n.advertise<client::Time>("client_topic", 10);
+
+    ros::ServiceClient client = n.serviceClient<client::show>("show_name");
+
+    client::show srv;
+    srv.request.req=0;
+    client.call(srv);
+
     // 设置循环的频率
     ros::Rate loop_rate(1);
     while(ros::ok())
     {
     //初始化time
-    time_t tt;
-    time( &tt );
-    tt = tt + 8*3600;  // transform the time zone
-    tm* t= gmtime( &tt );
+    ros::Time begin = ros::Time::now();
     client::Time time;
-    time.hour = t->tm_hour;
-    time.min = t->tm_min; 
-    time.sec = t->tm_sec;
+    time.sec = (long unsigned int)begin.toSec();  
     time.name = "client";
     //发布消息
     client_topic_pub.publish(time);

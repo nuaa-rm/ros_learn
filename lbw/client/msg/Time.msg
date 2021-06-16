@@ -1,5 +1,4 @@
-uint8 hour
-uint8 min
+uint64 sec
 string name
-uint8 sec
+
 

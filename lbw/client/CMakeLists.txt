@@ -76,7 +76,7 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 add_message_files(FILES Time.msg)
-
+add_service_files(FILES show.srv)
 generate_messages(DEPENDENCIES std_msgs)
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
