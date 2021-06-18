@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+
 )
 
 ## System dependencies are found with CMake's conventions
@@ -57,8 +58,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate services in the 'srv' folder
  add_service_files(
    FILES
-   offer_a_service.srv
+   name.srv
  )
+generate_messages(DEPENDENCIES std_msgs)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -105,7 +107,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ser
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -149,7 +151,9 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-
+add_executable(my_time_server src/ser_server.cpp)
+target_link_libraries(my_time_server ${catkin_LIBRARIES})
+add_dependencies(my_time_server ${PROJECT_NAME}_gencpp)
 #############
 ## Install ##
 #############

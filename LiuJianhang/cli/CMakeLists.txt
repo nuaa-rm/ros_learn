@@ -9,7 +9,11 @@ project(cli)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
   std_msgs
+  message_generation
+  ser
+
 )
 
 ## System dependencies are found with CMake's conventions
@@ -54,10 +58,9 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate services in the 'srv' folder
 # add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
+#  FILES
 # )
+#generate_messages(DEPENDENCIES std_msgs)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -104,7 +107,8 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES cli
-#  CATKIN_DEPENDS roscpp std_msgs
+  CATKIN_DEPENDS roscpp rospy std_msgs message_runtime ser
+
 #  DEPENDS system_lib
 )
 
@@ -148,6 +152,9 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+add_executable(cli_client src/cli_client.cpp)
+target_link_libraries(cli_client ${catkin_LIBRARIES})
+add_dependencies(cli_client ${PROJECT_NAME}_gencpp)
 
 #############
 ## Install ##
@@ -203,5 +210,3 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-add_executable(cli src/top.cpp)
-target_link_libraries(cli ${catkin_LIBRARIES})
