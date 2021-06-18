@@ -29,6 +29,7 @@ int main(int argc, char **argv)
     ros::Subscriber client_topic_sub = n.subscribe("/client_topic", 10, timeInfoCallback);
 
     ros::ServiceServer service = n.advertiseService("show_name", nameCallback);
+
     ros::spin();
    
     return 0;

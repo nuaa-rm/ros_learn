@@ -63,7 +63,9 @@
   <exec_depend>std_msgs</exec_depend>
   <build_depend>message_generation</build_depend>
   <exec_depend>message_runtime</exec_depend>
-
+  <build_depend>server</build_depend>
+  <exec_depend>server</exec_depend>
+  <build_export_depend>server</build_export_depend>
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->

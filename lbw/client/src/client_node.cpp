@@ -9,19 +9,17 @@ using namespace std;
 int main(int argc, char **argv)
 {
     // ROS节点初始化
-    ros::init(argc,argv,"timer");
-    ros::init(argc, argv, "client");
+    ros::init(argc, argv, "client_topic");
     // 创建节点句柄
     ros::NodeHandle n;
     // 创建一个Publisher，发布名为client_topic的topic，消息类型为time，队列长度10
     ros::Publisher client_topic_pub = n.advertise<client::Time>("client_topic", 10);
 
-    ros::ServiceClient client = n.serviceClient<client::show>("show_name");
+    ros::ServiceClient cli = n.serviceClient<client::show>("show_name");
 
     client::show srv;
-    srv.request.req=0;
-    client.call(srv);
-
+    srv.request.req=1;
+    cli.call(srv);
     // 设置循环的频率
     ros::Rate loop_rate(1);
     while(ros::ok())
