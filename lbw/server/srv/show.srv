@@ -1,3 +1,3 @@
 uint8 req
 ---
-uint8 res
+string rep = client

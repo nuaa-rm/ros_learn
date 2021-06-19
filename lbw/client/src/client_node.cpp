@@ -1,10 +1,7 @@
-#include <ros/ros.h>
-#include <iostream>
-#include <time.h>
-#include <geometry_msgs/Twist.h>
 #include "client/Time.h"
 #include "client/show.h"
 #include <ros/time.h>
+#include <ros/ros.h>
 using namespace std;
 int main(int argc, char **argv)
 {
@@ -13,13 +10,13 @@ int main(int argc, char **argv)
     // 创建节点句柄
     ros::NodeHandle n;
     // 创建一个Publisher，发布名为client_topic的topic，消息类型为time，队列长度10
-    ros::Publisher client_topic_pub = n.advertise<client::Time>("client_topic", 10);
 
     ros::ServiceClient cli = n.serviceClient<client::show>("show_name");
 
     client::show srv;
     srv.request.req=1;
     cli.call(srv);
+    ros::Publisher client_topic_pub = n.advertise<client::Time>(srv.response.rep.c_str(), 10);
     // 设置循环的频率
     ros::Rate loop_rate(1);
     while(ros::ok())
