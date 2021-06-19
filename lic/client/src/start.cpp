@@ -1,4 +1,4 @@
-//Copyright 2021 Copyright Lic
+//Copyright 2021 Lic
 #include <ros/ros.h>
 #include "client/name.h"
 #include "client/topic_name.h"
@@ -32,3 +32,4 @@ int main(int argc, char **argv) {
     }
     return 0;
 }
+
