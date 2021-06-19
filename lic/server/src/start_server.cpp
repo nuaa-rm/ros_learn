@@ -7,7 +7,6 @@
 using namespace string;
 
 int num_of_sub = 0;
-string aim_topic;
 ros::Subscriber name_info_sub[100];
 
 void nameInfoCallback(const client::name::ConstPtr& msg) {
@@ -15,8 +14,9 @@ void nameInfoCallback(const client::name::ConstPtr& msg) {
     msg->name.c_str() ,msg->tim.sec);
 }
 
-bool topicCallback(client::topic_name::Request  &req,client::topic_name::Response &res)
-{
+bool topicCallback(client::topic_name::Request  
+&req,client::topic_name::Response &res) {
+    string aim_topic;
     ROS_INFO("Topic: name:%s  ", req.name.c_str());
     aim_topic = "/"+req.name;
     res.result = aim_topic;
