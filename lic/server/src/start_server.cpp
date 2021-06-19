@@ -11,11 +11,11 @@ ros::Subscriber name_info_sub[100];
 
 void nameInfoCallback(const client::name::ConstPtr& msg) {
     ROS_INFO("Subcriber Info: name:%s Time:%lld",
-    msg->name.c_str() ,msg->tim.sec);
+    msg->name.c_str() , msg->tim.sec);
 }
 
-bool topicCallback(client::topic_name::Request  
-&req,client::topic_name::Response &res) {
+bool topicCallback(const client::topic_name::Request
+&req, const client::topic_name::Response &res) {
     string aim_topic;
     ROS_INFO("Topic: name:%s  ", req.name.c_str());
     aim_topic = "/"+req.name;
