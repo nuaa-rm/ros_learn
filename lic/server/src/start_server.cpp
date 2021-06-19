@@ -4,8 +4,6 @@
 #include "client/name.h"
 #include "client/topic_name.h"
 
-using namespace string;
-
 int num_of_sub = 0;
 ros::Subscriber name_info_sub[100];
 
@@ -16,7 +14,7 @@ void nameInfoCallback(const client::name::ConstPtr& msg) {
 
 bool topicCallback(const client::topic_name::Request
 &req, const client::topic_name::Response &res) {
-    string aim_topic;
+    std::string aim_topic;
     ROS_INFO("Topic: name:%s  ", req.name.c_str());
     aim_topic = "/"+req.name;
     res.result = aim_topic;
