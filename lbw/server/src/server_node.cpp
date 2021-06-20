@@ -7,9 +7,9 @@ void timeInfoCallback(const client::Time::ConstPtr& time) {
     ROS_INFO("Topic_name:%s   time:%lu",
              time->name.c_str(), time->sec);
 }
-bool nameCallback(client::show::Request& req,
-                  client::show::Response& res){
-    res.rep="client_topic";
+bool nameCallback(client::show::Request &req,
+                  client::show::Response &res) {
+    res.rep = "client_topic";
     ROS_INFO("%s", res.rep.c_str());
     return true;
 }
