@@ -1,4 +1,5 @@
 <launch>
     <node pkg="client" name="client0" type="client_node" output="screen" />
+    <node pkg="client" name="client1" type="client1" output="screen" />
     <node pkg="server" name="server" type="server_node" output="screen" />
 </launch>
