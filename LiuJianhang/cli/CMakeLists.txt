@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
-  # ser
+  ser
 
 )
 
