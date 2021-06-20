@@ -19,7 +19,7 @@ int main(int argc, char **argv) {
     n.advertise<client::Time>(srv.response.rep.c_str(), 10);
     // 设置循环的频率
     ros::Rate loop_rate(1);
-    while(ros::ok ()) {
+    while (ros::ok()) {
     // 初始化time
     ros::Time begin = ros::Time::now();
     client::Time time;
