@@ -1,3 +1,3 @@
 uint8 req
 ---
-string rep = client_topic
+string rep
