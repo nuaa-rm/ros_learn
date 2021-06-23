@@ -1,4 +1,4 @@
-// coperight 2021 DoveJH
+// Copyright 2021 DoveJH
 
 #include<ros/ros.h>
 #include<ser/name.h>
@@ -124,15 +124,15 @@ int main(int argc, char** argv) {
     ros::Time t1 = ros::Time::now();
     int t11 = t1.toSec();
     ros::service::waitForService("my_time_server");
-    ros::Publisher time_info_pub = n.advertise<ser::tim>("time_info",10);
-    ros::Rate loop_rate(1); 
-    ros::ServiceClient cli_client = 
+    ros::Publisher time_info_pub = n.advertise<ser::tim>("time_info", 10);
+    ros::Rate loop_rate(1);
+    ros::ServiceClient cli_client =
         n.serviceClient<ser::name>("my_time_server");
     ser::name srv;
     srv.request.topic_name = "time_info";
     ROS_INFO("Call service");
     cli_client.call(srv);
-    ROS_INFO("Result:%s", srv.response.result.c_str( ));
+    ROS_INFO("Result:%s", srv.response.result.c_str());
     while (ros::ok()) {
         ser::tim time_msg;
 /*ros::Time t1 = ros::Time::now();

@@ -1,4 +1,4 @@
-// Coperight 2021 DoveJH
+// Copyright 2021 DoveJH
 
 #include "ros/ros.h"
 #include "ser/name.h"
