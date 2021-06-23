@@ -1,3 +1,5 @@
+//coperight 2021 DoveJH
+
 #include<ros/ros.h>
 #include<ser/name.h>
 #include<ser/tim.h>
@@ -118,25 +120,24 @@ int TimeMinute(long long& t)
 }*/
 int main(int argc, char** argv)
 {
-	ros::init(argc, argv, "cli_client");
-	ros::NodeHandle n;
-	ros::Time t1 = ros::Time::now();
-	int t11 = t1.toSec();
-	ros::service::waitForService("my_time_server");
-	ros::Publisher time_info_pub = n.advertise<ser::tim>("time_info",10);
-	ros::Rate loop_rate(1);
-	ros::ServiceClient cli_client = n.serviceClient<ser::name>("my_time_server");
-	ser::name srv;
-	srv.request.topic_name = "time_info";
-	ROS_INFO("Call service");
-	cli_client.call(srv);
-	ROS_INFO("Result:%s", srv.response.result.c_str());
-	while(ros::ok())
-	{
-		ser::tim time_msg;
-		/*ros::Time t1 = ros::Time::now();
-		double t_cur = t1.toSec();
-		long long t2 = t_cur;
+    ros::init(argc, argv, "cli_client");
+    ros::NodeHandle n;
+    ros::Time t1 = ros::Time::now();
+    int t11 = t1.toSec( );
+    ros::service::waitForService("my_time_server");
+    ros::Publisher time_info_pub = n.advertise<ser::tim>("time_info",10);
+    ros::Rate loop_rate(1);
+    ros::ServiceClient cli_client = n.serviceClient<ser::name>("my_time_server");
+    ser::name srv;
+    srv.request.topic_name = "time_info";
+    ROS_INFO("Call service");
+    cli_client.call(srv);
+    ROS_INFO("Result:%s", srv.response.result.c_str( ));
+    while(ros::ok( )){
+        ser::tim time_msg;
+/*ros::Time t1 = ros::Time::now();
+double t_cur = t1.toSec();
+long long t2 = t_cur;
 		long long t3 = t_cur;
 		time_msg.year = TimeYear(t2);
 		time_msg.month = TimeMonth(t2, time_msg.year);
@@ -144,13 +145,13 @@ int main(int argc, char** argv)
 		time_msg.hour = TimeHour(t3, time_msg.year);
 		time_msg.minute = TimeMinute(t3);
 		time_msg.second = t3;*/
-		ros::Time t2 = ros::Time::now();
-	        int t22 = t2.toSec();
-		time_msg.tim = t22 - t11;
-		time_msg.myName = "time_info";
-	       	time_info_pub.publish(time_msg);
-		loop_rate.sleep();
-
-	}
-	return 0;
+        ros::Time t2 = ros::Time::now();
+	int t22 = t2.toSec();
+        time_msg.tim = t22 - t11;
+        time_msg.myName = "time_info";
+        time_info_pub.publish(time_msg);
+        loop_rate.sleep();
+    }
+    return 0;
 }
+
