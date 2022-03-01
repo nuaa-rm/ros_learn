@@ -2,12 +2,12 @@
 
 #include <ros/ros.h>
 #include "client/Crist.h"
-#include "client/topic_tim.h"
+#include "std_msgs/Header.h"
 
-bool show_data(const client::topic_tim::ConstPtr& msg) {
+bool show_data(const std_msgs::Header::ConstPtr& msg) {
     // 打印接收到的数据
     ROS_INFO("Subsrcibe data name:%s,time:%d", 
-                            msg->name.c_str(), msg->time_now.sec);
+                            msg->frame_id.c_str(), msg->stamp.sec);
 }
 
 bool Callback(client::Crist::Request & req,
@@ -18,7 +18,7 @@ bool Callback(client::Crist::Request & req,
     // 设置返回数据
     res.result = "OK";
     // 订阅topic,注册回调函数show_data
-    ros::Subscriber inform_sub = n.subscribe<client::topic_tim>("/info_msg",10,show_data);
+    ros::Subscriber inform_sub = n.subscribe<std_msgs::Header>("head",10,show_data);
 }
 
 int main(int argc, char **argv) { 
