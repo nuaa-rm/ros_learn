@@ -5,7 +5,7 @@
 #include "std_msgs/Header.h"
 
 int main(int argc, char **argv) {
-    int i=0;
+    int i = 0;
     // 初始化ros节点 
     ros::init(argc, argv, "client_node");
     // 创建节点句柄
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
     while (ros::ok()) {
         // 初始化std_msgs::Header的数据
         std_msgs::Header Info;
-        Info.frame_id= "crist";
+        Info.frame_id = "crist";
         Info.stamp = ros::Time::now();
         // 发布消息
         inform_pub.publish(Info);
@@ -46,3 +46,4 @@ int main(int argc, char **argv) {
     }
     return 0;
 }
+
