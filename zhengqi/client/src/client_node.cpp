@@ -6,7 +6,7 @@
 
 int main(int argc, char **argv) {
     int i = 0;
-    // 初始化ros节点 
+    // 初始化ros节点
     ros::init(argc, argv, "client_node");
     // 创建节点句柄
     ros::NodeHandle n;
@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
     ros::service::waitForService("/show_name");
     // 创建一个服务客户端，连接名为/show_name的服务
     ros::ServiceClient name_client =
-	    n.serviceClient<client::Crist>("/show_name");
+	 n.serviceClient<client::Crist>("/show_name");
     // 初始化client::Crist的数据内容
     client::Crist srv;
     srv.request.name = "Crist";
