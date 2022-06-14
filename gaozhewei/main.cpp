@@ -5,5 +5,5 @@
 using namespace std;
 
 int main(){
-    cout<<"Hello World!(Final Exam Limited.)"<<endl;
+    cout<<"Hello World! (Final Exam Limited.)"<<endl;
 }
