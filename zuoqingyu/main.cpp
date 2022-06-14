@@ -1,5 +1,5 @@
 // Copyright 2021 bismarckkk
 #include <iostream>
 int main() {
-    cout<<"emmmmm,wohaoxiangdiancuole"<<endl;
+    cout<<"A BA A BA"<<endl;
 }
