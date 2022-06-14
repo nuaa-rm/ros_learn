@@ -1,3 +1,5 @@
 // Copyright 2021 bismarckkk
-
-int main() {}
+#include <iostream>
+int main() {
+    cout<<"I'm FW."<<endl;
+}
