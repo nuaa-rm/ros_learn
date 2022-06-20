@@ -16,8 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: reviewdog/action-cpplint@master
-      env:
-        INPUT_GITHUB_TOKEN: ${{ secrets.REVIEW_ACCOUNT }}
       with:
         github_token: ${{ secrets.REVIEW_ACCOUNT }}
         reporter: github-check
