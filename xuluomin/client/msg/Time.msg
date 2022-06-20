@@ -1,2 +1,2 @@
-uint64 sec
+time sec
 string name
