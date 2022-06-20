@@ -23,4 +23,6 @@ jobs:
           ,-whitespace/newline\
           ,-whitespace/operators\
           ,-whitespace/parens\
+          ,-whitespace/tab\
+          ,-runtime/references\
           " # Optional
