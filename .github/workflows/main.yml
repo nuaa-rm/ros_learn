@@ -17,8 +17,8 @@ jobs:
     - uses: actions/checkout@master
     - uses: reviewdog/action-cpplint@master
       with:
-        github_token: ${{ secrets.reivew_account }}
-        reporter: github-pr-review
+        github_token: ${{ secrets.REVIEW_ACCOUNT }}
+        reporter: github-check
         filter: "-readability/braces\
           ,-whitespace/braces\
           ,-whitespace/comments\
