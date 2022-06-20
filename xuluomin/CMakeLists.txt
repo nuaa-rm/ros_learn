@@ -7,5 +7,4 @@ include_directories(.)
 
 
 add_executable(ros_learn
-        main.cpp
         main.h)
