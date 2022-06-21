@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
-   server
+
 )
 
 ## System dependencies are found with CMake's conventions
@@ -155,6 +155,7 @@ include_directories(
 # )
 add_executable(client_node src/client_node.cpp)
 target_link_libraries(client_node ${catkin_LIBRARIES})
+add_dependencies(client_node ${PROJECT_NAME}_generate_messages_cpp)
 #############
 ## Install ##
 #############
