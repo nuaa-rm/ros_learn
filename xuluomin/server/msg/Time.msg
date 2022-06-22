@@ -1,2 +1,0 @@
-time sec
-string name
