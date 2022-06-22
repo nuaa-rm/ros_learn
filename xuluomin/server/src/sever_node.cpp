@@ -17,7 +17,7 @@ bool callback(client::show::Request& req,
     res.result = "OK";
     // 订阅topic,注册回调函数show_data
     ros::Subscriber client_topic_pub =
-            n.subscribe<std_msgs::Header>("head",10,show_data);
+            n.subscribe<std_msgs::Header>("head", 10, show_data);
 }
 int main(int argc, char **argv) {
     // 初始化节点
