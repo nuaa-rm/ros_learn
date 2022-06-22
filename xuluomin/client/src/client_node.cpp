@@ -20,16 +20,11 @@ int main(int argc, char **argv) {
         ROS_ERROR("Failed to call");
         return 1;
     }
-
-
-    //ros::Publisher client_topic_pub = n.advertise<client::Time>(srv.response.res.c_str(), 10);
-
-    ros::Publisher client_topic_pub = n.advertise<std_msgs::Header>("head", 10);
+    ros::Publisher client_topic_pub =
+            n.advertise<std_msgs::Header>("head", 10);
     // 循环的频率
     ros::Rate loop_rate(1);
-
     while (ros::ok()) {
-
         // 初始化std_msgs::Header的数据
         std_msgs::Header Info_message;
         Info_message.frame_id = "show";
