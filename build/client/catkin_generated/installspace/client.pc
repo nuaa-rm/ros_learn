@@ -1,0 +1,8 @@
+prefix=/home/andykong/catkin_ws/install
+
+Name: client
+Description: Description of client
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: roscpp rospy std_msgs
