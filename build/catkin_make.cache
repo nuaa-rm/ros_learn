@@ -1,0 +1,2 @@
+
+-DCATKIN_DEVEL_PREFIX=/home/kevin/ros_ws/ros_learn/devel -DCMAKE_INSTALL_PREFIX=/home/kevin/ros_ws/ros_learn/install -G Unix Makefiles
