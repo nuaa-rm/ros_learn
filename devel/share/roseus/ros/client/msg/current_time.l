@@ -62,18 +62,18 @@
    (+
     ;; string _name
     4 (length _name)
-    ;; uint8 _year
-    1
-    ;; uint8 _month
-    1
-    ;; uint8 _day
-    1
-    ;; uint8 _hour
-    1
-    ;; uint8 _minute
-    1
-    ;; uint8 _second
-    1
+    ;; uint16 _year
+    2
+    ;; uint16 _month
+    2
+    ;; uint16 _day
+    2
+    ;; uint16 _hour
+    2
+    ;; uint16 _minute
+    2
+    ;; uint16 _second
+    2
     ))
   (:serialize
    (&optional strm)
@@ -81,56 +81,56 @@
               (make-string-output-stream (send self :serialization-length)))))
      ;; string _name
        (write-long (length _name) s) (princ _name s)
-     ;; uint8 _year
-       (write-byte _year s)
-     ;; uint8 _month
-       (write-byte _month s)
-     ;; uint8 _day
-       (write-byte _day s)
-     ;; uint8 _hour
-       (write-byte _hour s)
-     ;; uint8 _minute
-       (write-byte _minute s)
-     ;; uint8 _second
-       (write-byte _second s)
+     ;; uint16 _year
+       (write-word _year s)
+     ;; uint16 _month
+       (write-word _month s)
+     ;; uint16 _day
+       (write-word _day s)
+     ;; uint16 _hour
+       (write-word _hour s)
+     ;; uint16 _minute
+       (write-word _minute s)
+     ;; uint16 _second
+       (write-word _second s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
    ;; string _name
      (let (n) (setq n (sys::peek buf ptr- :integer)) (incf ptr- 4) (setq _name (subseq buf ptr- (+ ptr- n))) (incf ptr- n))
-   ;; uint8 _year
-     (setq _year (sys::peek buf ptr- :char)) (incf ptr- 1)
-   ;; uint8 _month
-     (setq _month (sys::peek buf ptr- :char)) (incf ptr- 1)
-   ;; uint8 _day
-     (setq _day (sys::peek buf ptr- :char)) (incf ptr- 1)
-   ;; uint8 _hour
-     (setq _hour (sys::peek buf ptr- :char)) (incf ptr- 1)
-   ;; uint8 _minute
-     (setq _minute (sys::peek buf ptr- :char)) (incf ptr- 1)
-   ;; uint8 _second
-     (setq _second (sys::peek buf ptr- :char)) (incf ptr- 1)
+   ;; uint16 _year
+     (setq _year (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; uint16 _month
+     (setq _month (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; uint16 _day
+     (setq _day (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; uint16 _hour
+     (setq _hour (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; uint16 _minute
+     (setq _minute (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; uint16 _second
+     (setq _second (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;;
    self)
   )
 
-(setf (get client::current_time :md5sum-) "a6f5c81d6c9a9e6b4dd87b84cc2c41c6")
+(setf (get client::current_time :md5sum-) "f8c079afbf79a38ac7d2176ca422dbdb")
 (setf (get client::current_time :datatype-) "client/current_time")
 (setf (get client::current_time :definition-)
       "string name
 
-uint8 year
-uint8 month
-uint8 day
+uint16 year
+uint16 month
+uint16 day
 
-uint8 hour
-uint8 minute
-uint8 second
+uint16 hour
+uint16 minute
+uint16 second
 ")
 
 
 
-(provide :client/current_time "a6f5c81d6c9a9e6b4dd87b84cc2c41c6")
+(provide :client/current_time "f8c079afbf79a38ac7d2176ca422dbdb")
 
 

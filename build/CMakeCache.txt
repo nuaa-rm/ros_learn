@@ -290,6 +290,9 @@ catkin_DIR:PATH=/opt/ros/melodic/share/catkin/cmake
 //Value Computed by CMake
 client_BINARY_DIR:STATIC=/home/kevin/ros_ws/ros_learn/build/client
 
+//The directory containing a CMake configuration file for client.
+client_DIR:PATH=/home/kevin/ros_ws/ros_learn/devel/share/client/cmake
+
 //Value Computed by CMake
 client_SOURCE_DIR:STATIC=/home/kevin/ros_ws/ros_learn/src/client
 

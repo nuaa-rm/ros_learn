@@ -34,22 +34,22 @@ namespace client {
         typedef std::basic_string<char, std::char_traits<char>, typename ContainerAllocator::template rebind<char>::other> _name_type;
         _name_type name;
 
-        typedef uint8_t _year_type;
+        typedef uint16_t _year_type;
         _year_type year;
 
-        typedef uint8_t _month_type;
+        typedef uint16_t _month_type;
         _month_type month;
 
-        typedef uint8_t _day_type;
+        typedef uint16_t _day_type;
         _day_type day;
 
-        typedef uint8_t _hour_type;
+        typedef uint16_t _hour_type;
         _hour_type hour;
 
-        typedef uint8_t _minute_type;
+        typedef uint16_t _minute_type;
         _minute_type minute;
 
-        typedef uint8_t _second_type;
+        typedef uint16_t _second_type;
         _second_type second;
 
 
@@ -134,13 +134,13 @@ namespace ros {
         template<class ContainerAllocator>
         struct MD5Sum<::client::current_time_<ContainerAllocator> > {
             static const char *value() {
-                return "a6f5c81d6c9a9e6b4dd87b84cc2c41c6";
+                return "f8c079afbf79a38ac7d2176ca422dbdb";
             }
 
             static const char *value(const ::client::current_time_<ContainerAllocator> &) { return value(); }
 
-            static const uint64_t static_value1 = 0xa6f5c81d6c9a9e6bULL;
-            static const uint64_t static_value2 = 0x4dd87b84cc2c41c6ULL;
+            static const uint64_t static_value1 = 0xf8c079afbf79a38aULL;
+            static const uint64_t static_value2 = 0xc7d2176ca422dbdbULL;
         };
 
         template<class ContainerAllocator>
@@ -157,13 +157,13 @@ namespace ros {
             static const char *value() {
                 return "string name\n"
                        "\n"
-                       "uint8 year\n"
-                       "uint8 month\n"
-                       "uint8 day\n"
+                       "uint16 year\n"
+                       "uint16 month\n"
+                       "uint16 day\n"
                        "\n"
-                       "uint8 hour\n"
-                       "uint8 minute\n"
-                       "uint8 second\n";
+                       "uint16 hour\n"
+                       "uint16 minute\n"
+                       "uint16 second\n";
             }
 
             static const char *value(const ::client::current_time_<ContainerAllocator> &) { return value(); }
@@ -207,17 +207,17 @@ namespace ros {
                         typename ContainerAllocator::template rebind<char>::other > >
                         ::stream(s, indent + "  ", v.name);
                 s << indent << "year: ";
-                Printer<uint8_t>::stream(s, indent + "  ", v.year);
+                Printer<uint16_t>::stream(s, indent + "  ", v.year);
                 s << indent << "month: ";
-                Printer<uint8_t>::stream(s, indent + "  ", v.month);
+                Printer<uint16_t>::stream(s, indent + "  ", v.month);
                 s << indent << "day: ";
-                Printer<uint8_t>::stream(s, indent + "  ", v.day);
+                Printer<uint16_t>::stream(s, indent + "  ", v.day);
                 s << indent << "hour: ";
-                Printer<uint8_t>::stream(s, indent + "  ", v.hour);
+                Printer<uint16_t>::stream(s, indent + "  ", v.hour);
                 s << indent << "minute: ";
-                Printer<uint8_t>::stream(s, indent + "  ", v.minute);
+                Printer<uint16_t>::stream(s, indent + "  ", v.minute);
                 s << indent << "second: ";
-                Printer<uint8_t>::stream(s, indent + "  ", v.second);
+                Printer<uint16_t>::stream(s, indent + "  ", v.second);
             }
         };
 

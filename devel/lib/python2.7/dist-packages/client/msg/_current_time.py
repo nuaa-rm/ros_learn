@@ -8,20 +8,20 @@ import struct
 
 
 class current_time(genpy.Message):
-  _md5sum = "a6f5c81d6c9a9e6b4dd87b84cc2c41c6"
+  _md5sum = "f8c079afbf79a38ac7d2176ca422dbdb"
   _type = "client/current_time"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """string name
 
-uint8 year
-uint8 month
-uint8 day
+uint16 year
+uint16 month
+uint16 day
 
-uint8 hour
-uint8 minute
-uint8 second"""
+uint16 hour
+uint16 minute
+uint16 second"""
   __slots__ = ['name','year','month','day','hour','minute','second']
-  _slot_types = ['string','uint8','uint8','uint8','uint8','uint8','uint8']
+  _slot_types = ['string','uint16','uint16','uint16','uint16','uint16','uint16']
 
   def __init__(self, *args, **kwds):
     """
@@ -82,7 +82,7 @@ uint8 second"""
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_6B().pack(_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second))
+      buff.write(_get_struct_6H().pack(_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -106,8 +106,8 @@ uint8 second"""
         self.name = str[start:end]
       _x = self
       start = end
-      end += 6
-      (_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second,) = _get_struct_6B().unpack(str[start:end])
+      end += 12
+      (_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second,) = _get_struct_6H().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -127,7 +127,7 @@ uint8 second"""
         length = len(_x)
       buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
       _x = self
-      buff.write(_get_struct_6B().pack(_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second))
+      buff.write(_get_struct_6H().pack(_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -152,8 +152,8 @@ uint8 second"""
         self.name = str[start:end]
       _x = self
       start = end
-      end += 6
-      (_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second,) = _get_struct_6B().unpack(str[start:end])
+      end += 12
+      (_x.year, _x.month, _x.day, _x.hour, _x.minute, _x.second,) = _get_struct_6H().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -162,9 +162,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_6B = None
-def _get_struct_6B():
-    global _struct_6B
-    if _struct_6B is None:
-        _struct_6B = struct.Struct("<6B")
-    return _struct_6B
+_struct_6H = None
+def _get_struct_6H():
+    global _struct_6H
+    if _struct_6H is None:
+        _struct_6H = struct.Struct("<6H")
+    return _struct_6H

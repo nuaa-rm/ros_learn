@@ -428,6 +428,19 @@ roscpp_generate_messages_cpp/fast:
 .PHONY : roscpp_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named ros_learn_client
+
+# Build rule for target.
+ros_learn_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_learn_client
+.PHONY : ros_learn_client
+
+# fast build rule for target.
+ros_learn_client/fast:
+	$(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/build
+.PHONY : ros_learn_client/fast
+
+#=============================================================================
 # Target rules for targets named std_msgs_generate_messages_nodejs
 
 # Build rule for target.
@@ -635,6 +648,19 @@ client_gencpp/fast:
 	$(MAKE) -f client/CMakeFiles/client_gencpp.dir/build.make client/CMakeFiles/client_gencpp.dir/build
 .PHONY : client_gencpp/fast
 
+#=============================================================================
+# Target rules for targets named ros_learn_server
+
+# Build rule for target.
+ros_learn_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ros_learn_server
+.PHONY : ros_learn_server
+
+# fast build rule for target.
+ros_learn_server/fast:
+	$(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/build
+.PHONY : ros_learn_server/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -668,6 +694,7 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... roscpp_generate_messages_cpp"
+	@echo "... ros_learn_client"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... client_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
@@ -684,6 +711,7 @@ help:
 	@echo "... client_genpy"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... client_gencpp"
+	@echo "... ros_learn_server"
 .PHONY : help
 
 

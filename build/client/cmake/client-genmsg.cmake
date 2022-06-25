@@ -16,6 +16,7 @@ add_custom_target(client_generate_messages ALL)
 # verify that message/service dependencies have not changed since configure
 
 
+
 get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" NAME_WE)
 add_custom_target(_client_generate_messages_check_deps_${_filename}
         COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "client" "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" ""

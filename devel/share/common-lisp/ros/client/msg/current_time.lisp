@@ -95,11 +95,17 @@
     (cl:write-byte (cl:ldb (cl:byte 8 24) __ros_str_len) ostream))
   (cl:map cl:nil #'(cl:lambda (c) (cl:write-byte (cl:char-code c) ostream)) (cl:slot-value msg 'name))
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'year)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'year)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'month)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'month)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'day)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'day)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'hour)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'hour)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'minute)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'minute)) ostream)
   (cl:write-byte (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'second)) ostream)
+  (cl:write-byte (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'second)) ostream)
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <current_time>) istream)
   "Deserializes a message object of type '<current_time>"
@@ -112,11 +118,17 @@
       (cl:dotimes (__ros_str_idx __ros_str_len msg)
         (cl:setf (cl:char (cl:slot-value msg 'name) __ros_str_idx) (cl:code-char (cl:read-byte istream)))))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'year)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'year)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'month)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'month)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'day)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'day)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'hour)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'hour)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'minute)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'minute)) (cl:read-byte istream))
     (cl:setf (cl:ldb (cl:byte 8 0) (cl:slot-value msg 'second)) (cl:read-byte istream))
+    (cl:setf (cl:ldb (cl:byte 8 8) (cl:slot-value msg 'second)) (cl:read-byte istream))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<current_time>)))
@@ -127,25 +139,25 @@
   "client/current_time")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<current_time>)))
   "Returns md5sum for a message object of type '<current_time>"
-  "a6f5c81d6c9a9e6b4dd87b84cc2c41c6")
+  "f8c079afbf79a38ac7d2176ca422dbdb")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'current_time)))
   "Returns md5sum for a message object of type 'current_time"
-  "a6f5c81d6c9a9e6b4dd87b84cc2c41c6")
+  "f8c079afbf79a38ac7d2176ca422dbdb")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<current_time>)))
   "Returns full string definition for message of type '<current_time>"
-  (cl:format cl:nil "string name~%~%uint8 year~%uint8 month~%uint8 day~%~%uint8 hour~%uint8 minute~%uint8 second~%~%"))
+  (cl:format cl:nil "string name~%~%uint16 year~%uint16 month~%uint16 day~%~%uint16 hour~%uint16 minute~%uint16 second~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'current_time)))
   "Returns full string definition for message of type 'current_time"
-  (cl:format cl:nil "string name~%~%uint8 year~%uint8 month~%uint8 day~%~%uint8 hour~%uint8 minute~%uint8 second~%~%"))
+  (cl:format cl:nil "string name~%~%uint16 year~%uint16 month~%uint16 day~%~%uint16 hour~%uint16 minute~%uint16 second~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <current_time>))
   (cl:+ 0
      4 (cl:length (cl:slot-value msg 'name))
-     1
-     1
-     1
-     1
-     1
-     1
+     2
+     2
+     2
+     2
+     2
+     2
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <current_time>))
   "Converts a ROS message object to a list"

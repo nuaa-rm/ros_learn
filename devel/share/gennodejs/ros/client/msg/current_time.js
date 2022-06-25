@@ -77,17 +77,17 @@ class current_time {
     // Serialize message field [name]
     bufferOffset = _serializer.string(obj.name, buffer, bufferOffset);
     // Serialize message field [year]
-    bufferOffset = _serializer.uint8(obj.year, buffer, bufferOffset);
+    bufferOffset = _serializer.uint16(obj.year, buffer, bufferOffset);
     // Serialize message field [month]
-    bufferOffset = _serializer.uint8(obj.month, buffer, bufferOffset);
+    bufferOffset = _serializer.uint16(obj.month, buffer, bufferOffset);
     // Serialize message field [day]
-    bufferOffset = _serializer.uint8(obj.day, buffer, bufferOffset);
+    bufferOffset = _serializer.uint16(obj.day, buffer, bufferOffset);
     // Serialize message field [hour]
-    bufferOffset = _serializer.uint8(obj.hour, buffer, bufferOffset);
+    bufferOffset = _serializer.uint16(obj.hour, buffer, bufferOffset);
     // Serialize message field [minute]
-    bufferOffset = _serializer.uint8(obj.minute, buffer, bufferOffset);
+    bufferOffset = _serializer.uint16(obj.minute, buffer, bufferOffset);
     // Serialize message field [second]
-    bufferOffset = _serializer.uint8(obj.second, buffer, bufferOffset);
+    bufferOffset = _serializer.uint16(obj.second, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -98,24 +98,24 @@ class current_time {
     // Deserialize message field [name]
     data.name = _deserializer.string(buffer, bufferOffset);
     // Deserialize message field [year]
-    data.year = _deserializer.uint8(buffer, bufferOffset);
+    data.year = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [month]
-    data.month = _deserializer.uint8(buffer, bufferOffset);
+    data.month = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [day]
-    data.day = _deserializer.uint8(buffer, bufferOffset);
+    data.day = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [hour]
-    data.hour = _deserializer.uint8(buffer, bufferOffset);
+    data.hour = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [minute]
-    data.minute = _deserializer.uint8(buffer, bufferOffset);
+    data.minute = _deserializer.uint16(buffer, bufferOffset);
     // Deserialize message field [second]
-    data.second = _deserializer.uint8(buffer, bufferOffset);
+    data.second = _deserializer.uint16(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
     let length = 0;
     length += object.name.length;
-    return length + 10;
+    return length + 16;
   }
 
   static datatype() {
@@ -125,7 +125,7 @@ class current_time {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'a6f5c81d6c9a9e6b4dd87b84cc2c41c6';
+    return 'f8c079afbf79a38ac7d2176ca422dbdb';
   }
 
   static messageDefinition() {
@@ -133,13 +133,13 @@ class current_time {
     return `
     string name
     
-    uint8 year
-    uint8 month
-    uint8 day
+    uint16 year
+    uint16 month
+    uint16 day
     
-    uint8 hour
-    uint8 minute
-    uint8 second
+    uint16 hour
+    uint16 minute
+    uint16 second
     `;
   }
 

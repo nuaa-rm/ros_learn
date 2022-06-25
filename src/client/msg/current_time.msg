@@ -1,9 +1,9 @@
 string name
 
-uint8 year
-uint8 month
-uint8 day
+uint16 year
+uint16 month
+uint16 day
 
-uint8 hour
-uint8 minute
-uint8 second
+uint16 hour
+uint16 minute
+uint16 second

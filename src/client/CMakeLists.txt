@@ -208,3 +208,7 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(ros_learn_client src/client_main.cpp)
+add_dependencies(ros_learn_client client_generate_messages_cpp)
+target_link_libraries(ros_learn_client ${catkin_LIBRARIES})

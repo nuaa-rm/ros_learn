@@ -78,6 +78,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -123,17 +134,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -331,6 +331,21 @@ roscpp_generate_messages_cpp: client/CMakeFiles/roscpp_generate_messages_cpp.dir
 roscpp_generate_messages_cpp/fast:
 	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f client/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make client/CMakeFiles/roscpp_generate_messages_cpp.dir/build
 .PHONY : roscpp_generate_messages_cpp/fast
+
+# Convenience name for target.
+client/CMakeFiles/ros_learn_client.dir/rule:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f CMakeFiles/Makefile2 client/CMakeFiles/ros_learn_client.dir/rule
+.PHONY : client/CMakeFiles/ros_learn_client.dir/rule
+
+# Convenience name for target.
+ros_learn_client: client/CMakeFiles/ros_learn_client.dir/rule
+
+.PHONY : ros_learn_client
+
+# fast build rule for target.
+ros_learn_client/fast:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/build
+.PHONY : ros_learn_client/fast
 
 # Convenience name for target.
 client/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
@@ -572,6 +587,33 @@ client_gencpp/fast:
 	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f client/CMakeFiles/client_gencpp.dir/build.make client/CMakeFiles/client_gencpp.dir/build
 .PHONY : client_gencpp/fast
 
+src/client_main.o: src/client_main.cpp.o
+
+.PHONY : src/client_main.o
+
+# target to build an object file
+src/client_main.cpp.o:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/src/client_main.cpp.o
+.PHONY : src/client_main.cpp.o
+
+src/client_main.i: src/client_main.cpp.i
+
+.PHONY : src/client_main.i
+
+# target to preprocess a source file
+src/client_main.cpp.i:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/src/client_main.cpp.i
+.PHONY : src/client_main.cpp.i
+
+src/client_main.s: src/client_main.cpp.s
+
+.PHONY : src/client_main.s
+
+# target to generate assembly for a file
+src/client_main.cpp.s:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/src/client_main.cpp.s
+.PHONY : src/client_main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -580,6 +622,7 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... list_install_components"
+	@echo "... edit_cache"
 	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
@@ -593,6 +636,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... roscpp_generate_messages_cpp"
+	@echo "... ros_learn_client"
 	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... client_generate_messages_lisp"
 	@echo "... std_msgs_generate_messages_py"
@@ -611,7 +655,9 @@ help:
 	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... client_gencpp"
 	@echo "... test"
-	@echo "... edit_cache"
+	@echo "... src/client_main.o"
+	@echo "... src/client_main.i"
+	@echo "... src/client_main.s"
 .PHONY : help
 
 

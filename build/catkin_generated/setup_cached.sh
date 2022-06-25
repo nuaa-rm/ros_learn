@@ -12,5 +12,6 @@ export LD_LIBRARY_PATH="/home/kevin/ros_ws/ros_learn/devel/lib:$LD_LIBRARY_PATH"
 export PATH='/home/kevin/ros_ws/vio_t1/devel/bin:/opt/ros/melodic/bin:/home/kevin/.local/bin:/home/kevin/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
 export PKG_CONFIG_PATH="/home/kevin/ros_ws/ros_learn/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/kevin/ros_ws/ros_learn/build'
+export PYTHONPATH="/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages:$PYTHONPATH"
 export ROSLISP_PACKAGE_DIRECTORIES="/home/kevin/ros_ws/ros_learn/devel/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
 export ROS_PACKAGE_PATH="/home/kevin/ros_ws/ros_learn/src:$ROS_PACKAGE_PATH"

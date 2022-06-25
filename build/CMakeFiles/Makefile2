@@ -408,6 +408,7 @@ clean: gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean
 # Directory level rules for directory client
 
 # Convenience name for "all" pass in the directory.
+client/all: client/CMakeFiles/ros_learn_client.dir/all
 client/all: client/CMakeFiles/client_generate_messages.dir/all
 
 .PHONY : client/all
@@ -424,6 +425,7 @@ client/clean: client/CMakeFiles/std_msgs_generate_messages_lisp.dir/clean
 client/clean: client/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/clean
 client/clean: client/CMakeFiles/roscpp_generate_messages_eus.dir/clean
 client/clean: client/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+client/clean: client/CMakeFiles/ros_learn_client.dir/clean
 client/clean: client/CMakeFiles/std_msgs_generate_messages_nodejs.dir/clean
 client/clean: client/CMakeFiles/client_generate_messages_lisp.dir/clean
 client/clean: client/CMakeFiles/std_msgs_generate_messages_py.dir/clean
@@ -797,6 +799,43 @@ client/CMakeFiles/roscpp_generate_messages_cpp.dir/clean:
 
 # clean rule for target.
 clean: client/CMakeFiles/roscpp_generate_messages_cpp.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
+# Target rules for target client/CMakeFiles/ros_learn_client.dir
+
+# All Build rule for target.
+client/CMakeFiles/ros_learn_client.dir/all: client/CMakeFiles/client_generate_messages_cpp.dir/all
+	$(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/depend
+	$(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=19,20 "Built target ros_learn_client"
+.PHONY : client/CMakeFiles/ros_learn_client.dir/all
+
+# Include target in all.
+all: client/CMakeFiles/ros_learn_client.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+client/CMakeFiles/ros_learn_client.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kevin/ros_ws/ros_learn/build/CMakeFiles 3
+	$(MAKE) -f CMakeFiles/Makefile2 client/CMakeFiles/ros_learn_client.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kevin/ros_ws/ros_learn/build/CMakeFiles 0
+.PHONY : client/CMakeFiles/ros_learn_client.dir/rule
+
+# Convenience name for target.
+ros_learn_client: client/CMakeFiles/ros_learn_client.dir/rule
+
+.PHONY : ros_learn_client
+
+# clean rule for target.
+client/CMakeFiles/ros_learn_client.dir/clean:
+	$(MAKE) -f client/CMakeFiles/ros_learn_client.dir/build.make client/CMakeFiles/ros_learn_client.dir/clean
+.PHONY : client/CMakeFiles/ros_learn_client.dir/clean
+
+# clean rule for target.
+clean: client/CMakeFiles/ros_learn_client.dir/clean
 
 .PHONY : clean
 
@@ -1330,12 +1369,12 @@ clean: client/CMakeFiles/client_gencpp.dir/clean
 # Directory level rules for directory server
 
 # Convenience name for "all" pass in the directory.
-server/all:
+server/all: server/CMakeFiles/ros_learn_server.dir/all
 
 .PHONY : server/all
 
 # Convenience name for "clean" pass in the directory.
-server/clean:
+server/clean: server/CMakeFiles/ros_learn_server.dir/clean
 
 .PHONY : server/clean
 
@@ -1343,6 +1382,44 @@ server/clean:
 server/preinstall:
 
 .PHONY : server/preinstall
+
+#=============================================================================
+# Target rules for target server/CMakeFiles/ros_learn_server.dir
+
+# All Build rule for target.
+server/CMakeFiles/ros_learn_server.dir/all: client/CMakeFiles/ros_learn_client.dir/all
+server/CMakeFiles/ros_learn_server.dir/all: client/CMakeFiles/client_generate_messages_cpp.dir/all
+	$(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/depend
+	$(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=21,22 "Built target ros_learn_server"
+.PHONY : server/CMakeFiles/ros_learn_server.dir/all
+
+# Include target in all.
+all: server/CMakeFiles/ros_learn_server.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+server/CMakeFiles/ros_learn_server.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kevin/ros_ws/ros_learn/build/CMakeFiles 5
+	$(MAKE) -f CMakeFiles/Makefile2 server/CMakeFiles/ros_learn_server.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kevin/ros_ws/ros_learn/build/CMakeFiles 0
+.PHONY : server/CMakeFiles/ros_learn_server.dir/rule
+
+# Convenience name for target.
+ros_learn_server: server/CMakeFiles/ros_learn_server.dir/rule
+
+.PHONY : ros_learn_server
+
+# clean rule for target.
+server/CMakeFiles/ros_learn_server.dir/clean:
+	$(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/clean
+.PHONY : server/CMakeFiles/ros_learn_server.dir/clean
+
+# clean rule for target.
+clean: server/CMakeFiles/ros_learn_server.dir/clean
+
+.PHONY : clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

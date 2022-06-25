@@ -167,6 +167,48 @@ depend:
 	cd /home/kevin/ros_ws/ros_learn/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
+# Convenience name for target.
+server/CMakeFiles/ros_learn_server.dir/rule:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f CMakeFiles/Makefile2 server/CMakeFiles/ros_learn_server.dir/rule
+.PHONY : server/CMakeFiles/ros_learn_server.dir/rule
+
+# Convenience name for target.
+ros_learn_server: server/CMakeFiles/ros_learn_server.dir/rule
+
+.PHONY : ros_learn_server
+
+# fast build rule for target.
+ros_learn_server/fast:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/build
+.PHONY : ros_learn_server/fast
+
+src/server_main.o: src/server_main.cpp.o
+
+.PHONY : src/server_main.o
+
+# target to build an object file
+src/server_main.cpp.o:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/src/server_main.cpp.o
+.PHONY : src/server_main.cpp.o
+
+src/server_main.i: src/server_main.cpp.i
+
+.PHONY : src/server_main.i
+
+# target to preprocess a source file
+src/server_main.cpp.i:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/src/server_main.cpp.i
+.PHONY : src/server_main.cpp.i
+
+src/server_main.s: src/server_main.cpp.s
+
+.PHONY : src/server_main.s
+
+# target to generate assembly for a file
+src/server_main.cpp.s:
+	cd /home/kevin/ros_ws/ros_learn/build && $(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/src/server_main.cpp.s
+.PHONY : src/server_main.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -180,6 +222,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... ros_learn_server"
+	@echo "... src/server_main.o"
+	@echo "... src/server_main.i"
+	@echo "... src/server_main.s"
 .PHONY : help
 
 

@@ -37,6 +37,7 @@
 /home/kevin/ros_ws/ros_learn/build/gtest/googlemock/gtest/CMakeFiles/gtest.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/install/strip.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/list_install_components.dir
+/home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/edit_cache.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/rosgraph_msgs_generate_messages_py.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/roscpp_generate_messages_lisp.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir
@@ -50,6 +51,7 @@
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/rebuild_cache.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/roscpp_generate_messages_eus.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/roscpp_generate_messages_cpp.dir
+/home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/ros_learn_client.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/std_msgs_generate_messages_nodejs.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/client_generate_messages_lisp.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/std_msgs_generate_messages_py.dir
@@ -68,7 +70,6 @@
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/client_gencpp.dir
 /home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/test.dir
-/home/kevin/ros_ws/ros_learn/build/client/CMakeFiles/edit_cache.dir
 /home/kevin/ros_ws/ros_learn/build/server/CMakeFiles/install/strip.dir
 /home/kevin/ros_ws/ros_learn/build/server/CMakeFiles/install/local.dir
 /home/kevin/ros_ws/ros_learn/build/server/CMakeFiles/install.dir
@@ -76,3 +77,4 @@
 /home/kevin/ros_ws/ros_learn/build/server/CMakeFiles/rebuild_cache.dir
 /home/kevin/ros_ws/ros_learn/build/server/CMakeFiles/edit_cache.dir
 /home/kevin/ros_ws/ros_learn/build/server/CMakeFiles/test.dir
+/home/kevin/ros_ws/ros_learn/build/server/CMakeFiles/ros_learn_server.dir
