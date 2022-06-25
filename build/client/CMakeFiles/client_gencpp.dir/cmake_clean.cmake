@@ -1,5 +1,5 @@
 
 # Per-language clean rules from dependency scanning.
-foreach (lang)
-    include(CMakeFiles/client_gencpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
-endforeach ()
+foreach(lang )
+  include(CMakeFiles/client_gencpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

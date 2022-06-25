@@ -207,6 +207,5 @@ include_directories(
 # catkin_add_nosetests(test)
 
 add_executable(ros_learn_server src/server_main.cpp) #声称可执行文件
-add_dependencies(ros_learn_server ros_learn_client)
 add_dependencies(ros_learn_server client_generate_messages_cpp)
 target_link_libraries(ros_learn_server ${catkin_LIBRARIES})#链接

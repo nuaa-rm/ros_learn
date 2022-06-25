@@ -17,7 +17,7 @@ set(catkin_RUN_DEPENDS "python-argparse" "python-catkin-pkg" "python3-catkin-pkg
 set(catkin_RUN_DEPENDS_python-catkin-pkg_VERSION_GT "0.4.3")
 set(catkin_RUN_DEPENDS_python3-catkin-pkg_VERSION_GT "0.4.3")
 set(catkin_TEST_DEPENDS "python-mock" "python3-mock" "python-nose" "python3-nose")
-set(catkin_DOC_DEPENDS)
+set(catkin_DOC_DEPENDS )
 set(catkin_URL_WEBSITE "http://wiki.ros.org/catkin")
 set(catkin_URL_BUGTRACKER "https://github.com/ros/catkin/issues")
 set(catkin_URL_REPOSITORY "https://github.com/ros/catkin")

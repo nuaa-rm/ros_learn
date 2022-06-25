@@ -1387,7 +1387,6 @@ server/preinstall:
 # Target rules for target server/CMakeFiles/ros_learn_server.dir
 
 # All Build rule for target.
-server/CMakeFiles/ros_learn_server.dir/all: client/CMakeFiles/ros_learn_client.dir/all
 server/CMakeFiles/ros_learn_server.dir/all: client/CMakeFiles/client_generate_messages_cpp.dir/all
 	$(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/depend
 	$(MAKE) -f server/CMakeFiles/ros_learn_server.dir/build.make server/CMakeFiles/ros_learn_server.dir/build
@@ -1401,7 +1400,7 @@ all: server/CMakeFiles/ros_learn_server.dir/all
 
 # Build rule for subdir invocation for target.
 server/CMakeFiles/ros_learn_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kevin/ros_ws/ros_learn/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kevin/ros_ws/ros_learn/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 server/CMakeFiles/ros_learn_server.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/kevin/ros_ws/ros_learn/build/CMakeFiles 0
 .PHONY : server/CMakeFiles/ros_learn_server.dir/rule
