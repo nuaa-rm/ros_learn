@@ -3,6 +3,6 @@ prefix=/home/kevin/ros_ws/ros_learn/devel
 Name: client
 Description: Description of client
 Version: 0.0.0
-Cflags: 
+Cflags: -I/home/kevin/ros_ws/ros_learn/devel/include
 Libs: -L${prefix}/lib 
 Requires: 

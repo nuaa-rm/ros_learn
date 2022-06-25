@@ -38,7 +38,43 @@ if (NOT DEFINED CMAKE_CROSSCOMPILING)
 endif ()
 
 if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/client/msg" TYPE FILE FILES "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/client/cmake" TYPE FILE FILES "/home/kevin/ros_ws/ros_learn/build/client/catkin_generated/installspace/client-msg-paths.cmake")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/kevin/ros_ws/ros_learn/devel/include/client")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
     file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/kevin/ros_ws/ros_learn/build/client/catkin_generated/installspace/client.pc")
+endif ()
+
+if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/client/cmake" TYPE FILE FILES "/home/kevin/ros_ws/ros_learn/build/client/catkin_generated/installspace/client-msg-extras.cmake")
 endif ()
 
 if ("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

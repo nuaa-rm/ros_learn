@@ -1,6 +1,9 @@
-int year
-int month
-int day
-int hour
-int minute
-int second
+string name
+
+uint8 year
+uint8 month
+uint8 day
+
+uint8 hour
+uint8 minute
+uint8 second
