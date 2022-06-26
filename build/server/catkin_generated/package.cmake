@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "server")
 set(server_VERSION "0.0.0")
-set(server_MAINTAINER "kevin <kevin@todo.todo>")
+set(server_MAINTAINER "kevin <kevin3617@outlook.com>")
 set(server_PACKAGE_FORMAT "2")
 set(server_BUILD_DEPENDS "roscpp" "rospy" "std_msgs")
 set(server_BUILD_EXPORT_DEPENDS "roscpp" "rospy" "std_msgs")

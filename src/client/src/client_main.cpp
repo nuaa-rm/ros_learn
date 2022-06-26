@@ -22,9 +22,9 @@ int main(int argc, char **argv) {
         time(&nowtime);
         p = localtime(&nowtime);
 
-        publishing_msg.name = "Hello,This is a topic!";
-        publishing_msg.year = p->tm_year;
-        publishing_msg.month = p->tm_mon;
+        publishing_msg.name = "Time_broadcaster_1";
+        publishing_msg.year = p->tm_year + 1900;
+        publishing_msg.month = p->tm_mon + 1;
         publishing_msg.day = p->tm_mday;
         publishing_msg.hour = p->tm_hour;
         publishing_msg.minute = p->tm_min;
