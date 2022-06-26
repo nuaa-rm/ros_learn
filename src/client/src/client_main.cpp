@@ -1,6 +1,9 @@
 //
 // Created by kevin on 6/25/22.
 //
+
+#include <ctime>
+
 #include <ros/ros.h>
 #include <client/current_time.h>
 
@@ -11,14 +14,21 @@ int main(int argc, char **argv) {
     client::current_time publishing_msg;
     ros::Publisher client_publisher = client_node_handle.advertise<client::current_time>("client_pub_current_time", 1);
     ros::Rate loop_rate(1.0);
+
+    time_t nowtime;
+    struct tm* p;
+
     while (ros::ok()) {
+        time(&nowtime);
+        p = localtime(&nowtime);
+
         publishing_msg.name = "Hello,This is a topic!";
-        publishing_msg.year = 2022;
-        publishing_msg.month = 6;
-        publishing_msg.day = 25;
-        publishing_msg.hour = 8;
-        publishing_msg.minute = 42;
-        publishing_msg.second = 20;
+        publishing_msg.year = p->tm_year;
+        publishing_msg.month = p->tm_mon;
+        publishing_msg.day = p->tm_mday;
+        publishing_msg.hour = p->tm_hour;
+        publishing_msg.minute = p->tm_min;
+        publishing_msg.second = p->tm_sec;
 
         client_publisher.publish(publishing_msg);
         loop_rate.sleep();
