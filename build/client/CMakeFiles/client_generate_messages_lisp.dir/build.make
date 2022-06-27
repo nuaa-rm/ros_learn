@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/kevin/ros_ws/ros_learn/build
 include client/CMakeFiles/client_generate_messages_lisp.dir/progress.make
 
 client/CMakeFiles/client_generate_messages_lisp: /home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/msg/current_time.lisp
+client/CMakeFiles/client_generate_messages_lisp: /home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/srv/login.lisp
 
 
 /home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/msg/current_time.lisp: /opt/ros/melodic/lib/genlisp/gen_lisp.py
@@ -61,8 +62,14 @@ client/CMakeFiles/client_generate_messages_lisp: /home/kevin/ros_ws/ros_learn/de
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from client/current_time.msg"
 	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/msg
 
+/home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/srv/login.lisp: /opt/ros/melodic/lib/genlisp/gen_lisp.py
+/home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/srv/login.lisp: /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from client/login.srv"
+	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/srv
+
 client_generate_messages_lisp: client/CMakeFiles/client_generate_messages_lisp
 client_generate_messages_lisp: /home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/msg/current_time.lisp
+client_generate_messages_lisp: /home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/srv/login.lisp
 client_generate_messages_lisp: client/CMakeFiles/client_generate_messages_lisp.dir/build.make
 
 .PHONY : client_generate_messages_lisp

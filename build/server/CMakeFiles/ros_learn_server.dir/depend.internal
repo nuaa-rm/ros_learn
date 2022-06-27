@@ -3,6 +3,9 @@
 
 server/CMakeFiles/ros_learn_server.dir/src/server_main.cpp.o
  /home/kevin/ros_ws/ros_learn/devel/include/client/current_time.h
+ /home/kevin/ros_ws/ros_learn/devel/include/client/login.h
+ /home/kevin/ros_ws/ros_learn/devel/include/client/loginRequest.h
+ /home/kevin/ros_ws/ros_learn/devel/include/client/loginResponse.h
  /home/kevin/ros_ws/ros_learn/src/server/src/server_main.cpp
  /opt/ros/melodic/include/ros/advertise_options.h
  /opt/ros/melodic/include/ros/advertise_service_options.h

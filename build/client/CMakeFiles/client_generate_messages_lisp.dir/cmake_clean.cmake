@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/client_generate_messages_lisp"
   "/home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/msg/current_time.lisp"
+  "/home/kevin/ros_ws/ros_learn/devel/share/common-lisp/ros/client/srv/login.lisp"
 )
 
 # Per-language clean rules from dependency scanning.

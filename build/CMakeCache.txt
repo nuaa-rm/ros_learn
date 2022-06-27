@@ -402,6 +402,9 @@ server_BINARY_DIR:STATIC=/home/kevin/ros_ws/ros_learn/build/server
 //Value Computed by CMake
 server_SOURCE_DIR:STATIC=/home/kevin/ros_ws/ros_learn/src/server
 
+//The directory containing a CMake configuration file for service.
+service_DIR:PATH=service_DIR-NOTFOUND
+
 //The directory containing a CMake configuration file for std_msgs.
 std_msgs_DIR:PATH=/opt/ros/melodic/share/std_msgs/cmake
 

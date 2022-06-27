@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/kevin/ros_ws/ros_learn/build
 include client/CMakeFiles/client_generate_messages_eus.dir/progress.make
 
 client/CMakeFiles/client_generate_messages_eus: /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/msg/current_time.l
+client/CMakeFiles/client_generate_messages_eus: /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/srv/login.l
 client/CMakeFiles/client_generate_messages_eus: /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/manifest.l
 
 
@@ -62,12 +63,18 @@ client/CMakeFiles/client_generate_messages_eus: /home/kevin/ros_ws/ros_learn/dev
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from client/current_time.msg"
 	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/msg
 
+/home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/srv/login.l: /opt/ros/melodic/lib/geneus/gen_eus.py
+/home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/srv/login.l: /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from client/login.srv"
+	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/srv
+
 /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/manifest.l: /opt/ros/melodic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for client"
 	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client client std_msgs
 
 client_generate_messages_eus: client/CMakeFiles/client_generate_messages_eus
 client_generate_messages_eus: /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/msg/current_time.l
+client_generate_messages_eus: /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/srv/login.l
 client_generate_messages_eus: /home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/manifest.l
 client_generate_messages_eus: client/CMakeFiles/client_generate_messages_eus.dir/build.make
 

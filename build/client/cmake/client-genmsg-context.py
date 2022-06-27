@@ -1,7 +1,7 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
 messages_str = "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg"
-services_str = ""
+services_str = "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv"
 pkg_name = "client"
 dependencies_str = "std_msgs"
 langs = "gencpp;geneus;genlisp;gennodejs;genpy"

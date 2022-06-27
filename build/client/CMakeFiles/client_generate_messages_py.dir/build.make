@@ -54,7 +54,9 @@ CMAKE_BINARY_DIR = /home/kevin/ros_ws/ros_learn/build
 include client/CMakeFiles/client_generate_messages_py.dir/progress.make
 
 client/CMakeFiles/client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/_current_time.py
+client/CMakeFiles/client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/_login.py
 client/CMakeFiles/client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/__init__.py
+client/CMakeFiles/client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/__init__.py
 
 
 /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/_current_time.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
@@ -62,14 +64,28 @@ client/CMakeFiles/client_generate_messages_py: /home/kevin/ros_ws/ros_learn/deve
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG client/current_time"
 	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg
 
+/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/_login.py: /opt/ros/melodic/lib/genpy/gensrv_py.py
+/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/_login.py: /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python code from SRV client/login"
+	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv
+
 /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/__init__.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
 /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/__init__.py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/_current_time.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for client"
+/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/__init__.py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/_login.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python msg __init__.py for client"
 	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg --initpy
+
+/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/__init__.py: /opt/ros/melodic/lib/genpy/genmsg_py.py
+/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/__init__.py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/_current_time.py
+/home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/__init__.py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/_login.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating Python srv __init__.py for client"
+	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv --initpy
 
 client_generate_messages_py: client/CMakeFiles/client_generate_messages_py
 client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/_current_time.py
+client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/_login.py
 client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/msg/__init__.py
+client_generate_messages_py: /home/kevin/ros_ws/ros_learn/devel/lib/python2.7/dist-packages/client/srv/__init__.py
 client_generate_messages_py: client/CMakeFiles/client_generate_messages_py.dir/build.make
 
 .PHONY : client_generate_messages_py

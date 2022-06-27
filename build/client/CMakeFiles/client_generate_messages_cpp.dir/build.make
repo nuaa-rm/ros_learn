@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/kevin/ros_ws/ros_learn/build
 include client/CMakeFiles/client_generate_messages_cpp.dir/progress.make
 
 client/CMakeFiles/client_generate_messages_cpp: /home/kevin/ros_ws/ros_learn/devel/include/client/current_time.h
+client/CMakeFiles/client_generate_messages_cpp: /home/kevin/ros_ws/ros_learn/devel/include/client/login.h
 
 
 /home/kevin/ros_ws/ros_learn/devel/include/client/current_time.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
@@ -62,8 +63,16 @@ client/CMakeFiles/client_generate_messages_cpp: /home/kevin/ros_ws/ros_learn/dev
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from client/current_time.msg"
 	cd /home/kevin/ros_ws/ros_learn/src/client && /home/kevin/ros_ws/ros_learn/build/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/include/client -e /opt/ros/melodic/share/gencpp/cmake/..
 
+/home/kevin/ros_ws/ros_learn/devel/include/client/login.h: /opt/ros/melodic/lib/gencpp/gen_cpp.py
+/home/kevin/ros_ws/ros_learn/devel/include/client/login.h: /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv
+/home/kevin/ros_ws/ros_learn/devel/include/client/login.h: /opt/ros/melodic/share/gencpp/msg.h.template
+/home/kevin/ros_ws/ros_learn/devel/include/client/login.h: /opt/ros/melodic/share/gencpp/srv.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from client/login.srv"
+	cd /home/kevin/ros_ws/ros_learn/src/client && /home/kevin/ros_ws/ros_learn/build/catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/include/client -e /opt/ros/melodic/share/gencpp/cmake/..
+
 client_generate_messages_cpp: client/CMakeFiles/client_generate_messages_cpp
 client_generate_messages_cpp: /home/kevin/ros_ws/ros_learn/devel/include/client/current_time.h
+client_generate_messages_cpp: /home/kevin/ros_ws/ros_learn/devel/include/client/login.h
 client_generate_messages_cpp: client/CMakeFiles/client_generate_messages_cpp.dir/build.make
 
 .PHONY : client_generate_messages_cpp

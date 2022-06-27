@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.cmake.em
 
-message(STATUS "client: 1 messages, 0 services")
+message(STATUS "client: 1 messages, 1 services")
 
 set(MSG_I_FLAGS "-Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg;-Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg")
 
@@ -16,6 +16,11 @@ add_custom_target(client_generate_messages ALL)
 # verify that message/service dependencies have not changed since configure
 
 
+
+get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv" NAME_WE)
+add_custom_target(_client_generate_messages_check_deps_${_filename}
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "client" "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv" ""
+)
 
 get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" NAME_WE)
 add_custom_target(_client_generate_messages_check_deps_${_filename}
@@ -36,6 +41,12 @@ _generate_msg_cpp(client
 )
 
 ### Generating Services
+_generate_srv_cpp(client
+  "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/client
+)
 
 ### Generating Module File
 _generate_module_cpp(client
@@ -49,6 +60,8 @@ add_custom_target(client_generate_messages_cpp
 add_dependencies(client_generate_messages client_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv" NAME_WE)
+add_dependencies(client_generate_messages_cpp _client_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" NAME_WE)
 add_dependencies(client_generate_messages_cpp _client_generate_messages_check_deps_${_filename})
 
@@ -69,6 +82,12 @@ _generate_msg_eus(client
 )
 
 ### Generating Services
+_generate_srv_eus(client
+  "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/client
+)
 
 ### Generating Module File
 _generate_module_eus(client
@@ -82,6 +101,8 @@ add_custom_target(client_generate_messages_eus
 add_dependencies(client_generate_messages client_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv" NAME_WE)
+add_dependencies(client_generate_messages_eus _client_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" NAME_WE)
 add_dependencies(client_generate_messages_eus _client_generate_messages_check_deps_${_filename})
 
@@ -102,6 +123,12 @@ _generate_msg_lisp(client
 )
 
 ### Generating Services
+_generate_srv_lisp(client
+  "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/client
+)
 
 ### Generating Module File
 _generate_module_lisp(client
@@ -115,6 +142,8 @@ add_custom_target(client_generate_messages_lisp
 add_dependencies(client_generate_messages client_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv" NAME_WE)
+add_dependencies(client_generate_messages_lisp _client_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" NAME_WE)
 add_dependencies(client_generate_messages_lisp _client_generate_messages_check_deps_${_filename})
 
@@ -135,6 +164,12 @@ _generate_msg_nodejs(client
 )
 
 ### Generating Services
+_generate_srv_nodejs(client
+  "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/client
+)
 
 ### Generating Module File
 _generate_module_nodejs(client
@@ -148,6 +183,8 @@ add_custom_target(client_generate_messages_nodejs
 add_dependencies(client_generate_messages client_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv" NAME_WE)
+add_dependencies(client_generate_messages_nodejs _client_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" NAME_WE)
 add_dependencies(client_generate_messages_nodejs _client_generate_messages_check_deps_${_filename})
 
@@ -168,6 +205,12 @@ _generate_msg_py(client
 )
 
 ### Generating Services
+_generate_srv_py(client
+  "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv"
+  "${MSG_I_FLAGS}"
+  ""
+  ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/client
+)
 
 ### Generating Module File
 _generate_module_py(client
@@ -181,6 +224,8 @@ add_custom_target(client_generate_messages_py
 add_dependencies(client_generate_messages client_generate_messages_py)
 
 # add dependencies to all check dependencies targets
+get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/srv/login.srv" NAME_WE)
+add_dependencies(client_generate_messages_py _client_generate_messages_check_deps_${_filename})
 get_filename_component(_filename "/home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg" NAME_WE)
 add_dependencies(client_generate_messages_py _client_generate_messages_check_deps_${_filename})
 

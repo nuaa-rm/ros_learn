@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/kevin/ros_ws/ros_learn/build
 include client/CMakeFiles/client_generate_messages_nodejs.dir/progress.make
 
 client/CMakeFiles/client_generate_messages_nodejs: /home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/msg/current_time.js
+client/CMakeFiles/client_generate_messages_nodejs: /home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/srv/login.js
 
 
 /home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/msg/current_time.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
@@ -61,8 +62,14 @@ client/CMakeFiles/client_generate_messages_nodejs: /home/kevin/ros_ws/ros_learn/
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from client/current_time.msg"
 	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/kevin/ros_ws/ros_learn/src/client/msg/current_time.msg -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/msg
 
+/home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/srv/login.js: /opt/ros/melodic/lib/gennodejs/gen_nodejs.py
+/home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/srv/login.js: /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kevin/ros_ws/ros_learn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from client/login.srv"
+	cd /home/kevin/ros_ws/ros_learn/build/client && ../catkin_generated/env_cached.sh /usr/bin/python2 /opt/ros/melodic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/kevin/ros_ws/ros_learn/src/client/srv/login.srv -Iclient:/home/kevin/ros_ws/ros_learn/src/client/msg -Istd_msgs:/opt/ros/melodic/share/std_msgs/cmake/../msg -p client -o /home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/srv
+
 client_generate_messages_nodejs: client/CMakeFiles/client_generate_messages_nodejs
 client_generate_messages_nodejs: /home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/msg/current_time.js
+client_generate_messages_nodejs: /home/kevin/ros_ws/ros_learn/devel/share/gennodejs/ros/client/srv/login.js
 client_generate_messages_nodejs: client/CMakeFiles/client_generate_messages_nodejs.dir/build.make
 
 .PHONY : client_generate_messages_nodejs

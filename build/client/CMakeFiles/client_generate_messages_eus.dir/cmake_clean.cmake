@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/client_generate_messages_eus"
   "/home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/msg/current_time.l"
+  "/home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/srv/login.l"
   "/home/kevin/ros_ws/ros_learn/devel/share/roseus/ros/client/manifest.l"
 )
 

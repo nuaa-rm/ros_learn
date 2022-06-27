@@ -1,28 +1,50 @@
 //
 // Created by kevin on 6/25/22.
 //
-
 #include <ctime>
-
+#include <cstring>
 #include <ros/ros.h>
 #include <client/current_time.h>
+#include <client/login.h>
+#include <iostream>
+
+using namespace std;
+
+ros::ServiceClient service_client;
 
 int main(int argc, char **argv) {
-    ros::init(argc, argv, "ros_learn_client");
+    string main_name;
+    bool logged = 0;
+    cin>>main_name;
+    ros::init(argc, argv, main_name);
     ros::NodeHandle client_node_handle;
 
     client::current_time publishing_msg;
-    ros::Publisher client_publisher = client_node_handle.advertise<client::current_time>("client_pub_current_time", 1);
-    ros::Rate loop_rate(1.0);
+    ros::Publisher client_publisher = client_node_handle.advertise<client::current_time>(main_name, 1);
 
-    time_t nowtime;
+    service_client = client_node_handle.serviceClient<client::login>("ros_learn_login_service");
+    client::login login_service_message;
+    login_service_message.request.req_code=1;
+    login_service_message.request.node_name=main_name;
+
+    ros::Rate loop_rate(1.0);
+    while(!logged) {
+        ROS_INFO("Not logged in, trying again!");
+        logged = service_client.call(login_service_message);
+        if(login_service_message.response.ack_code != 10){
+            logged = 0;
+        }
+        loop_rate.sleep();
+    }
+    ROS_INFO("Logged in, now publishing the topic!");
+    time_t now_time_from_system;
     struct tm* p;
 
     while (ros::ok()) {
-        time(&nowtime);
-        p = localtime(&nowtime);
+        time(&now_time_from_system);
+        p = localtime(&now_time_from_system);
 
-        publishing_msg.name = "Time_broadcaster_1";
+        publishing_msg.name = main_name;
         publishing_msg.year = p->tm_year + 1900;
         publishing_msg.month = p->tm_mon + 1;
         publishing_msg.day = p->tm_mday;
@@ -33,6 +55,5 @@ int main(int argc, char **argv) {
         client_publisher.publish(publishing_msg);
         loop_rate.sleep();
     }
-
     return 0;
 }
