@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
     service_server =
             server_node_handle.advertiseService(
                     "ros_learn_login_service", login_handle);
-    ROS_INFO("Server started!", req.node_name.c_str());
+    ROS_INFO("Server started!");
     ros::spin();
     return 0;
 }

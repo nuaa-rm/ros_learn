@@ -38,20 +38,20 @@ int main(int argc, char **argv) {
         loop_rate.sleep();
     }
     ROS_INFO("Logged in, now publishing the topic!");
-    time_t now_time_from_system;
-    struct tm* p;
+    time_t time_seconds = time(0);
+    struct tm now_time;
 
     while (ros::ok()) {
-        time(&now_time_from_system);
-        p = localtime_r(&now_time_from_system);
+        //time(&now_time_from_system);
+        localtime_r(&time_seconds, &now_time);
 
         publishing_msg.name = main_name;
-        publishing_msg.year = p->tm_year + 1900;
-        publishing_msg.month = p->tm_mon + 1;
-        publishing_msg.day = p->tm_mday;
-        publishing_msg.hour = p->tm_hour;
-        publishing_msg.minute = p->tm_min;
-        publishing_msg.second = p->tm_sec;
+        publishing_msg.year = now_time.tm_year + 1900;
+        publishing_msg.month = now_time.tm_mon + 1;
+        publishing_msg.day = now_time.tm_mday;
+        publishing_msg.hour = now_time.tm_hour;
+        publishing_msg.minute = now_time.tm_min;
+        publishing_msg.second = now_time.tm_sec;
 
         client_publisher.publish(publishing_msg);
         loop_rate.sleep();
