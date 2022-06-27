@@ -1,28 +1,29 @@
 //
 // Created by kevin on 6/25/22.
 //
-#include <ctime>
-#include <cstring>
 #include <ros/ros.h>
 #include <client/current_time.h>
 #include <client/login.h>
+#include <ctime>
+#include <cstring>
 #include <iostream>
-
-using namespace std;
 
 ros::ServiceClient service_client;
 
 int main(int argc, char **argv) {
-    string main_name;
+    std::string main_name;
     bool logged = 0;
-    cin>>main_name;
+    std::cin>>main_name;
     ros::init(argc, argv, main_name);
     ros::NodeHandle client_node_handle;
 
     client::current_time publishing_msg;
-    ros::Publisher client_publisher = client_node_handle.advertise<client::current_time>(main_name, 1);
+    ros::Publisher client_publisher =
+            client_node_handle.advertise<client::current_time>(main_name, 1);
 
-    service_client = client_node_handle.serviceClient<client::login>("ros_learn_login_service");
+    service_client =
+            client_node_handle.serviceClient<client::login>(
+                    "ros_learn_login_service");
     client::login login_service_message;
     login_service_message.request.req_code=1;
     login_service_message.request.node_name=main_name;
@@ -42,7 +43,7 @@ int main(int argc, char **argv) {
 
     while (ros::ok()) {
         time(&now_time_from_system);
-        p = localtime(&now_time_from_system);
+        p = localtime_r(&now_time_from_system);
 
         publishing_msg.name = main_name;
         publishing_msg.year = p->tm_year + 1900;
