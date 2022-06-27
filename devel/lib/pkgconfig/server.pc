@@ -1,8 +1,0 @@
-prefix=/home/kevin/ros_ws/ros_learn/devel
-
-Name: server
-Description: Description of server
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
