@@ -4,11 +4,19 @@
 #include <ros/ros.h>
 #include <client/current_time.h>
 #include <client/login.h>
+
+#include <signal.h>
+#include <unistd.h>
+
 #include <ctime>
 #include <cstring>
 #include <iostream>
 
 ros::ServiceClient service_client;
+client::login login_service_message;
+
+void interrupt_handler(int x);
+bool running_flag = 1;
 
 int main(int argc, char **argv) {
     std::string main_name;
@@ -24,7 +32,7 @@ int main(int argc, char **argv) {
     service_client =
             client_node_handle.serviceClient<client::login>(
                     "ros_learn_login_service");
-    client::login login_service_message;
+
     login_service_message.request.req_code=1;
     login_service_message.request.node_name=main_name;
     login_service_message.response.ack_code = 0;
@@ -39,10 +47,14 @@ int main(int argc, char **argv) {
         loop_rate.sleep();
     }
     ROS_INFO("Logged in, now publishing the topic!");
+
+
+    signal(SIGINT, interrupt_handler);
+
     time_t time_seconds = time(0);
     struct tm now_time;
 
-    while (ros::ok()) {
+    while (ros::ok() && running_flag) {
         time(&time_seconds);
         localtime_r(&time_seconds, &now_time);
 
@@ -58,4 +70,11 @@ int main(int argc, char **argv) {
         loop_rate.sleep();
     }
     return 0;
+}
+
+void interrupt_handler(int x) {
+    login_service_message.request.req_code=10;
+    service_client.call(login_service_message);
+    ROS_INFO("Quit!");
+    running_flag = 0;
 }

@@ -6,6 +6,8 @@
 #include <client/login.h>
 #include <vector>
 
+#include <iostream>
+
 ros::NodeHandle *server_node_handle_pointer = NULL;
 ros::ServiceServer service_server;
 std::vector<ros::Subscriber> server_subscribers;
@@ -31,10 +33,12 @@ bool login_handle(client::login::Request &req, client::login::Response &ack) {
                         req.node_name, 1, time_callback));
     }else{
         ROS_INFO("A client: %s has logged out!", req.node_name.c_str());
-        for(auto &each_subscriber : server_subscribers)
-            if(each_subscriber.getTopic() == req.node_name){
+        for(auto &each_subscriber : server_subscribers){
+            std::string assist_sig = "/";
+            if(assist_sig + req.node_name.c_str() == each_subscriber.getTopic()){
                 each_subscriber.shutdown();
             }
+        }
         ack.ack_code = 20;
     }
     return true;
