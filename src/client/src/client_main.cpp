@@ -27,6 +27,7 @@ int main(int argc, char **argv) {
     client::login login_service_message;
     login_service_message.request.req_code=1;
     login_service_message.request.node_name=main_name;
+    login_service_message.response.ack_code = 0;
 
     ros::Rate loop_rate(1.0);
     while(!logged) {
@@ -42,7 +43,7 @@ int main(int argc, char **argv) {
     struct tm now_time;
 
     while (ros::ok()) {
-        //time(&now_time_from_system);
+        time(&time_seconds);
         localtime_r(&time_seconds, &now_time);
 
         publishing_msg.name = main_name;
