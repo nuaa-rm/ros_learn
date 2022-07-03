@@ -18,7 +18,7 @@ ros::ServiceServer service_server;
 void time_callback(const server::time::ConstPtr& time)
 {
     time_t  cur_t=time->second;
-    struct tm *t=localtime(&cur_t);
+    struct tm *t=localtime_r(&cur_t);
 
     int year = t->tm_year + 1900; // years since 1900
     int month = t->tm_mon + 1; // months since January - [0, 11]
@@ -28,7 +28,8 @@ void time_callback(const server::time::ConstPtr& time)
     int minute = t->tm_min;
     int second = t->tm_sec;
 
-    ROS_INFO("The name of client:%s   time: %d-%d-%d  %d : %d : %d  ", time->name.c_str(), year, month, day, hour, minute, second);
+    ROS_INFO("The name of client:%s   time: %d-%d-%d  %d : %d : %d  ",
+             time->name.c_str(), year, month, day, hour, minute, second);
 }
 
 // service回调函数，输入参数request，输出参数response
