@@ -1,4 +1,5 @@
 #include <ros/ros.h>
+#include <time.h>
 
 #include <server/time.h>
 #include <server/show.h>
@@ -16,9 +17,18 @@ ros::ServiceServer service_server;
 
 void time_callback(const server::time::ConstPtr& time)
 {
-    // 将接收到的消息打印出来
-    ROS_INFO("The name of client:%s   time:%lu ",
-             time->name.c_str(), time->second);
+    time_t  cur_t=time->second;
+    struct tm *t=localtime(&cur_t);
+
+    int year = t->tm_year + 1900; // years since 1900
+    int month = t->tm_mon + 1; // months since January - [0, 11]
+    int day = t->tm_mday;
+
+    int hour = t->tm_hour;
+    int minute = t->tm_min;
+    int second = t->tm_sec;
+
+    ROS_INFO("The name of client:%s   time: %d-%d-%d  %d : %d : %d  ", time->name.c_str(), year, month, day, hour, minute, second);
 }
 
 // service回调函数，输入参数request，输出参数response
