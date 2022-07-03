@@ -17,15 +17,18 @@ ros::ServiceServer service_server;
 void time_callback(const server::time::ConstPtr& time)
 {
     // 将接收到的消息打印出来
-    ROS_INFO("The name of client:%s   time:%lu ", time->name.c_str(), time->second);
+    ROS_INFO("The name of client:%s   time:%lu ",
+             time->name.c_str(), time->second);
 }
 
 // service回调函数，输入参数request，输出参数response
-bool show_callback(server::show::Request &request, server::show::Response &response)
+bool show_callback(server::show::Request &request,
+                   server::show::Response &response)
 {
     if(request.request == 1)
     {
-        ROS_INFO("A client: %s has logged in!", request.name.c_str());
+        ROS_INFO("A client: %s has logged in!",
+                 request.name.c_str());
         response.response = 10;
         server_subscribers.push_back(n_pointer->subscribe(request.name, 10, time_callback));
     }
