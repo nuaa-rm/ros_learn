@@ -27,19 +27,20 @@ bool show_callback(server::show::Request &request,
 {
     if(request.request == 1)
     {
-        ROS_INFO("A client: %s has logged in!",
+        ROS_INFO("The name of client: %s logged in",
                  request.name.c_str());
         response.response = 10;
         server_subscribers.push_back(n_pointer->subscribe(request.name, 10, time_callback));
     }
     else
     {
-        ROS_INFO("A client: %s has logged out!", request.name.c_str());
-        for(auto &each_subscriber : server_subscribers)
+        ROS_INFO("The name of client: %s logged out",
+                 request.name.c_str());
+        for(auto &subscriber : server_subscribers)
         {
-            std::string assist_sig = "/";
-            if(assist_sig + request.name.c_str() == each_subscriber.getTopic())
-                each_subscriber.shutdown();
+            std::string the_string = "/";
+            if(the_string + request.name.c_str() == subscriber.getTopic())
+                subscriber.shutdown();
         }
         response.response = 20;
     }
@@ -55,13 +56,10 @@ int main(int argc, char **argv)
     ros::NodeHandle n;
     n_pointer = &n;
 
-    // 1.创建一个名为/show_info的server，注册回调函数show_Callback
-    // 2.创建一个Subscriber，订阅名为client_topic的topic，注册回调函数time_Callback
-
     service_server = n.advertiseService("/show_info", show_callback);
 
     // 循环等待回调函数
-    ROS_INFO("Ready to show informtion.");
+    ROS_INFO("show the information.");
     ros::spin();
 
     return 0;
