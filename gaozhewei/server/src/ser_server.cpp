@@ -1,9 +1,10 @@
-#include "ros/ros.h"
+#include <vector>
+#include <iostream>
 #include <client/current_time.h>
 #include <client/login.h>
-#include <vector>
+#include "ros/ros.h"
 
-#include <iostream>
+
 
 ros::NodeHandle *server_node_handle_pointer = nullptr;
 ros::ServiceServer service_server;
