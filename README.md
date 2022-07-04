@@ -7,5 +7,8 @@ server提供一个服务，供client注册，client启动后调用该服务发�
 client如果要退出，则应该在退出前再次调用server的服务，但此次为注销客户端（使用不同的req区分），server收到注销请求后应该销毁对应的subscriber并不再从该topic接收消息
 # 如何运行  
 1. git clone -b AndyKong https://github.com/nuaa-rm/ros_learn.git
-2. 打开三个终端
-3. 
+2. 工作空间中打开三个终端
+3. 第一个一个终端roscore
+4. 第二个终端依次source devel/setup.sh，catkin_make，rosrun server server
+5. 第三个终端依次source devel/setup.sh，catkin_make，rosrun client client
+6. 代码有变动两个都要catkin_make
