@@ -7,7 +7,7 @@
 #include <signal.h>
 #include <unistd.h>
 
-#include <chrono>
+//#include <chrono>
 #include <ctime>
 #include <cstring>
 #include <iostream>
@@ -23,26 +23,22 @@ int main(int argc, char** argv)
 {
     //using namespace std;
     //using namespace std::chrono;
-    std::string main_name;
-    std::cin>>main_name;
+    std::string name;
+    ROS_INFO("Input name:");
+    std::cin>>name;
 
-    ros::init(argc, argv, main_name);
+    ros::init(argc, argv, name);
     ros::NodeHandle n;
-
-    // 初始化client::show的请求数据
     srv.request.request = 1;
-    srv.request.node_name = main_name;
+    srv.request.node_name = name;
     srv.response.response = 0;
-
     ros::service::waitForService("/show_info");
     service_client = n.serviceClient<client::show>("/show_info");
-
     ros::Rate loop_rate(1);
     service_client.call(srv);
+    ROS_INFO("Logged in!");
 
-    ROS_INFO("Logged successfully, now send the topic.");
-
-    ros::Publisher time_topic_pub = n.advertise<client::time>(main_name, 10);
+    ros::Publisher time_topic_pub = n.advertise<client::time>(name, 10);
 
     signal(SIGINT, interrupt_handler);
 
@@ -56,14 +52,12 @@ int main(int argc, char** argv)
     char tmp[32]={NULL};
     strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S",localtime(&t));
     time_msg.sec = tmp;
-	time_msg.name = main_name;
-
+	time_msg.name = name;
 
 	time_topic_pub.publish(time_msg);
 
     loop_rate.sleep();
     }
-   
 
     return 0;
 }
@@ -73,7 +67,7 @@ void interrupt_handler(int x)
 {
     srv.request.request=10;
     service_client.call(srv);
-    ROS_INFO("Had quited this subscriber.");
+    ROS_INFO("Logged out!");
     flag = 0;
 }
 
