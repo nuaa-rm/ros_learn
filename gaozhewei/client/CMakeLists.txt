@@ -8,12 +8,12 @@ project(client)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-  message_generation
-  server
-)
+        roscpp
+        rospy
+        std_msgs
+        message_generation
+        )
+
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -50,17 +50,17 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate messages in the 'msg' folder
 # add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+   FILES
+   current_time.msg
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+   FILES
+   login.srv
+ )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -105,11 +105,10 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES client
-        CATKIN_DEPENDS roscpp rospy std_msgs message_runtime server
-#  CATKIN_DEPENDS roscpp rospy std_msgs
-#  DEPENDS system_lib
+        #  INCLUDE_DIRS include
+        #  LIBRARIES client
+        #  CATKIN_DEPENDS roscpp rospy std_msgs
+        #  DEPENDS system_lib
 )
 
 ###########
@@ -119,8 +118,8 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
+        # include
+        ${catkin_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library
@@ -152,9 +151,7 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-add_executable(cli_client src/cli_client.cpp)
-target_link_libraries(cli_client ${catkin_LIBRARIES})
-add_dependencies(cli_client ${PROJECT_NAME}_gencpp)
+
 #############
 ## Install ##
 #############
@@ -209,3 +206,7 @@ add_dependencies(cli_client ${PROJECT_NAME}_gencpp)
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+add_executable(ros_learn_client src/cli_client.cpp)
+add_dependencies(ros_learn_client client_generate_messages_cpp)
+target_link_libraries(ros_learn_client ${catkin_LIBRARIES})
