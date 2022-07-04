@@ -4,7 +4,6 @@
 #include <ros/ros.h>
 
 
-
 ros::ServiceClient service_client;
 client::login service_msg;
 
