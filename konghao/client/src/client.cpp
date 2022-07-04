@@ -1,43 +1,79 @@
-//
-// Created by andykong on 22-6-23.
-//
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include <client/num.h>
-#include <client/print.h>
-#include <sstream>
-
+#include <ros/ros.h>
 #include <ros/time.h>
 
-int main(int argc, char **argv)
+#include <client/time.h>
+#include <client/show.h>
+
+#include <signal.h>
+#include <unistd.h>
+
+#include <chrono>
+#include <ctime>
+#include <cstring>
+#include <iostream>
+
+ros::ServiceClient service_client;
+client::show srv;
+
+void interrupt_handler(int x);
+bool flag = 1;
+
+
+int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "client");
+    //using namespace std;
+    //using namespace std::chrono;
+    std::string main_name;
+    std::cin>>main_name;
+
+    ros::init(argc, argv, main_name);
     ros::NodeHandle n;
-    ros::ServiceClient sclient = n.serviceClient<client::show>("show_name");
-    client::print srv;
-    srv.request.name ="print";
+
+    // 初始化client::show的请求数据
+    srv.request.request = 1;
+    srv.request.node_name = main_name;
+    srv.response.response = 0;
+
+    ros::service::waitForService("/show_info");
+    service_client = n.serviceClient<client::show>("/show_info");
+
     ros::Rate loop_rate(1);
+    service_client.call(srv);
 
-    if (sclient.call(srv)) {
-        ROS_INFO("result: %s",  srv.response.result.c_str());
-        ROS_INFO("Succeed");
-    } else {
-        ROS_ERROR("Failed");
-        return 1;
-    }
-    ros::Publisher inform_pub = n.advertise<std_msgs::Header>("head", 10);
-    int count = 0;
-    while (ros::ok())
+    ROS_INFO("Logged successfully, now send the topic.");
+
+    ros::Publisher time_topic_pub = n.advertise<client::time>(main_name, 10);
+
+    signal(SIGINT, interrupt_handler);
+
+    while (ros::ok()&&flag)
     {
+    client::time time_msg;
+    //system_clock::time_point now = system_clock::now();
+    //time_t tt = system_clock::to_time_t(now);
+    using namespace std;
+    time_t t = time(0);
+    char tmp[32]={NULL};
+    strftime(tmp, sizeof(tmp), "%Y-%m-%d %H:%M:%S",localtime(&t));
+    time_msg.sec = tmp;
+	time_msg.name = main_name;
 
-        std_msgs::String msg;
-        std::stringstream ss;
-        std_msgs::Header time_now;
-        time_now.frame_id = "print";
-        time_now.stamp = ros::Time::now();
-        inform_pub.publish(Info_message);
+
+	time_topic_pub.publish(time_msg);
+
+    loop_rate.sleep();
     }
-
+   
 
     return 0;
 }
+
+
+void interrupt_handler(int x) 
+{
+    srv.request.request=10;
+    service_client.call(srv);
+    ROS_INFO("Had quited this subscriber.");
+    flag = 0;
+}
+

@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  std_srvs
   message_generation
 )
 
@@ -48,10 +49,11 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
- add_message_files(
-FILES
-Num.msg
- )
+# add_message_files(
+#   FILES
+#   Message1.msg
+#   Message2.msg
+# )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -68,10 +70,25 @@ Num.msg
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+# )
+
+ add_message_files(
+   FILES
+   time.msg
+ )
+
+ add_service_files(
+   FILES 
+   show.srv
+ )
+
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -105,7 +122,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES server
-  CATKIN_DEPENDS roscpp rospy std_msgs
+   CATKIN_DEPENDS roscpp rospy std_msgs std_srvs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -149,9 +166,13 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
 add_executable(server src/server.cpp)
-target_link_libraries(server ${catkin_LIBRARIES})
-add_dependencies(server server_generate_messages_cpp)
+target_link_libraries(server
+   ${catkin_LIBRARIES}
+ )
+add_dependencies(server ${PROJECT_NAME}_gencpp)
+
 #############
 ## Install ##
 #############

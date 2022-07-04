@@ -1,32 +1,63 @@
-//
-// Created by andykong on 22-6-23.
-//
-#include "ros/ros.h"
-#include "std_msgs/Header.h"
-#include <client/Num.h>
-#include <client/Print.h>
+#include <ros/ros.h>
+#include <server/time.h>
+#include <server/show.h>
 
-void chatterCallback(const client::print::Request &req,
-                     const client::print::Response &res)
+#include <vector>
+#include <iostream>
+
+server::show srv;
+ros::NodeHandle *n_pointer = NULL;
+std::vector<ros::Subscriber> server_subscribers;
+ros::ServiceServer service_server;
+
+void time_callback(const server::time::ConstPtr& time) 
 {
-    ros::NodeHandle n;
-    ROS_INFO("name:%s", req.name.c_str());
-    res.result = "OK";
-    ros::Subscriber client_topic_pub = n.subscribe<std_msgs::Header>("head", 10, show_data);
+    // 将接收到的消息打印出来
+    ROS_INFO("Client_name:%s   time:%s ", time->name.c_str(), time->sec.c_str());
 }
 
-
-void print(const std_msgs::Header::ConstPtr& msg) {
-    ROS_INFO("name:%s,time:%d", msg->frame_id.c_str(), msg->stamp.sec);
+// service回调函数，输入参数request，输出参数response
+bool show_callback(server::show::Request &request, server::show::Response &response)
+{
+    if(request.request == 1) 
+    {
+        ROS_INFO("A client: %s has logged in!", request.node_name.c_str());
+        response.response = 10;
+        server_subscribers.push_back(n_pointer->subscribe(request.node_name, 10, time_callback));
+    }
+    else
+    {
+        ROS_INFO("A client: %s has logged out!", request.node_name.c_str());
+        for(auto &each_subscriber : server_subscribers)
+        {
+            std::string assist_sig = "/";
+            if(assist_sig + request.node_name.c_str() == each_subscriber.getTopic())
+                each_subscriber.shutdown();
+        }
+        response.response = 20;
+    }
+    return true;
 }
 
 int main(int argc, char **argv)
 {
+    // ROS节点初始化
     ros::init(argc, argv, "server");
+
+    // 创建节点句柄
     ros::NodeHandle n;
-    ros::ServiceServer server = n.advertiseService("server", chatterCallback);
-    ros::Subscriber sub = n.subscribe("chatter", 1000, print);
+    n_pointer = &n;
+    
+    // 1.创建一个名为/show_info的server，注册回调函数show_Callback
+    // 2.创建一个Subscriber，订阅名为client_topic的topic，注册回调函数time_Callback
+    
+    service_server = n.advertiseService("/show_info", show_callback);
+
+    // 循环等待回调函数
+    ROS_INFO("Ready to show informtion.");
     ros::spin();
 
     return 0;
 }
+
+
