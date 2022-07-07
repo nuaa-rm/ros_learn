@@ -1,29 +1,37 @@
-#include <csignal>
+#include <ros/ros.h>
 #include <client/current_time.h>
 #include <client/login.h>
-#include <ros/ros.h>
+#include <iostream>
+#include <ctime>
+#include <chrono>
+#include <iomanip>
 
-
+using namespace std;
 ros::ServiceClient service_client;
 client::login service_msg;
+string current_time;
 
-void interrupt_handler(int i);
-bool flag = true;
+void format_time_point()
+{
+    auto tp=std::chrono::system_clock::now();
+    auto time=std::chrono::system_clock::to_time_t(tp);
+    std::stringstream ss;
+    ss<<std::put_time(std::localtime(&time),"%Y-%m-%d %H:%M:%S");
+    current_time = ss.str();
+}
 
 int main(int argc, char **argv) {
-    std::string main_name;
     bool logged = false;
-    std::cin>>main_name;
-    ros::init(argc, argv, main_name);
+    ros::init(argc, argv,"cli_client",ros::init_options::AnonymousName);
     ros::NodeHandle client_node_handle;
     client::current_time publishing_msg;
     ros::Publisher client_publisher =
-            client_node_handle.advertise<client::current_time>(main_name, 1);
+            client_node_handle.advertise<client::current_time>(ros::this_node::getName(), 1);
     service_client =
             client_node_handle.serviceClient<client::login>(
                     "login_service");
-    service_msg.request.req_code=1;
-    service_msg.request.node_name=main_name;
+    service_msg.request.req_code = 1;
+    service_msg.request.node_name = ros::this_node::getName();
     service_msg.response.ack_code = 0;
     ros::Rate loop_rate(1.0);
     while(!logged) {
@@ -35,28 +43,16 @@ int main(int argc, char **argv) {
         loop_rate.sleep();
     }
     ROS_INFO("Logged in, publishing the topic!");
-    signal(SIGINT, interrupt_handler);
-    time_t time_seconds = time(nullptr);
-    struct tm now_time{};
-    while (ros::ok() && flag) {
-        time(&time_seconds);
-        localtime_r(&time_seconds, &now_time);
-        publishing_msg.name = main_name;
-        publishing_msg.year = now_time.tm_year + 1900;
-        publishing_msg.month = now_time.tm_mon + 1;
-        publishing_msg.day = now_time.tm_mday;
-        publishing_msg.hour = now_time.tm_hour;
-        publishing_msg.minute = now_time.tm_min;
-        publishing_msg.second = now_time.tm_sec;
+    while (ros::ok()) {
+        format_time_point();
+        publishing_msg.name = ros::this_node::getName();
+        publishing_msg.current_time = current_time;
         client_publisher.publish(publishing_msg);
         loop_rate.sleep();
     }
-    return 0;
-}
-
-void interrupt_handler(int i) {
     service_msg.request.req_code=10;
     service_client.call(service_msg);
     ROS_INFO("Quit!");
-    flag = false;
+    return 0;
 }
+

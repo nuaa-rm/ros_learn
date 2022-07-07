@@ -1,24 +1,18 @@
-#include <vector>
-#include <iostream>
+#include "ros/ros.h"
 #include <client/current_time.h>
 #include <client/login.h>
-#include "ros/ros.h"
+#include <vector>
 
-
+#include <iostream>
 
 ros::NodeHandle *server_node_handle_pointer = nullptr;
 ros::ServiceServer service_server;
 std::vector<ros::Subscriber> server_subscribers;
 
 void time_callback(const client::current_time::ConstPtr &msg) {
-    ROS_INFO("Name: %s , Time:%d/%d/%d-%d:%d:%d ."
+    ROS_INFO("Name: %s , Time: %s ."
     , (msg->name).c_str()
-    , msg->year
-    , msg->month
-    , msg->day
-    , msg->hour
-    , msg->minute
-    , msg->second
+    , (msg->current_time).c_str()
     );
 }
 
@@ -36,6 +30,7 @@ bool login_handle(client::login::Request &req, client::login::Response &ack) {
             std::string assist_sig = "/";
             if(assist_sig + req.node_name ==
                each_subscriber.getTopic()){
+                server_subscribers.clear();
                 each_subscriber.shutdown();
             }
         }
