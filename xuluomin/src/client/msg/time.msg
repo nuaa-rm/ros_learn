@@ -1,2 +1,2 @@
-uint8 second
+uint64 second
 string name

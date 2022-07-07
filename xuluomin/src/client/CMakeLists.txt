@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
         roscpp
         rospy
         std_msgs
+        std_srvs
         message_generation
 )
 
@@ -49,7 +50,7 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate messages in the 'msg' folder
 add_message_files(
-        FILES
+       FILES
         time.msg
 )
 
@@ -57,7 +58,7 @@ add_message_files(
  add_service_files(
    FILES
    show.srv
-#   Service2.srv
+  #Service2.srv
  )
 
 ## Generate actions in the 'action' folder
@@ -105,7 +106,7 @@ add_message_files(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES client
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+        CATKIN_DEPENDS roscpp rospy std_msgs std_srvs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -151,7 +152,9 @@ include_directories(
 # )
 
 add_executable(client src/client.cpp)
-target_link_libraries(client ${catkin_LIBRARIES})
+target_link_libraries(client
+        ${catkin_LIBRARIES}
+        )
 #############
 ## Install ##
 #############

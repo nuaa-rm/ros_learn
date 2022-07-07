@@ -8,10 +8,11 @@ project(server)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-        message_generation
+        roscpp
+        rospy
+        std_msgs
+        std_srvs
+        client
 )
 
 ## System dependencies are found with CMake's conventions
@@ -48,16 +49,16 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   time.msg
- )
+ #add_message_files(
+  # FILES
+  # time.msg
+ #)
 
 ## Generate services in the 'srv' folder
- add_service_files(
-   FILES
-   show.srv
- )
+ #add_service_files(
+  # FILES
+  # show.srv
+ #)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -67,10 +68,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
- generate_messages(
-   DEPENDENCIES
-   std_msgs
- )
+ #generate_messages(
+  # DEPENDENCIES
+  # std_msgs
+ #)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -104,7 +105,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES server
-#  CATKIN_DEPENDS roscpp rospy std_msgs
+        CATKIN_DEPENDS roscpp rospy std_msgs std_srvs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -150,6 +151,7 @@ include_directories(
 # )
 add_executable(server src/server.cpp)
 target_link_libraries(server ${catkin_LIBRARIES})
+add_dependencies(server client_gencpp)
 #############
 ## Install ##
 #############

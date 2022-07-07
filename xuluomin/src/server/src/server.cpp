@@ -1,24 +1,23 @@
 #include <ros/ros.h>
 #include <time.h>
 
-#include <server/time.h>
-#include <server/show.h>
+#include <client/time.h>
+#include <client/show.h>
 
 #include <vector>
 #include <iostream>
 
-server::show srv;
-
-ros::NodeHandle *n_pointer;
+client::show srv;
 
 std::vector<ros::Subscriber> server_subscribers;
 
 ros::ServiceServer service_server;
 
-void time_callback(const server::time::ConstPtr& time)
+void time_callback(const client::time::ConstPtr& time)
 {
     time_t  cur_t=time->second;
-    struct tm *t=localtime_r(&cur_t);
+    struct tm *t;
+    t=localtime(&cur_t);
 
     int year = t->tm_year + 1900; // years since 1900
     int month = t->tm_mon + 1; // months since January - [0, 11]
@@ -33,8 +32,8 @@ void time_callback(const server::time::ConstPtr& time)
 }
 
 // service回调函数，输入参数request，输出参数response
-bool show_callback(server::show::Request &request,
-                   server::show::Response &response)
+bool show_callback(client::show::Request &request,
+                   client::show::Response &response)
 {
     if(request.request == 1)
     {
@@ -53,7 +52,10 @@ bool show_callback(server::show::Request &request,
             if(the_string + request.name.c_str() == subscriber.getTopic())
                 subscriber.shutdown();
         }
+
+        server_subscribers.clear();
         response.response = 20;
+
     }
     return true;
 }
@@ -65,7 +67,6 @@ int main(int argc, char **argv)
 
     // 创建节点句柄
     ros::NodeHandle n;
-    n_pointer = &n;
 
     service_server = n.advertiseService("/show_info", show_callback);
 

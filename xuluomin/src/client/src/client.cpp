@@ -2,6 +2,7 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include <ros/time.h>
+
 #include <client/time.h>
 #include <client/show.h>
 
@@ -9,19 +10,23 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <ctime>
+#include <cstring>
 
-void interrupt_handler(int x);
-bool flag_ros = 1;
+//void interrupt_handler(int x);
+
 ros::ServiceClient service_client;
 client::show srv;
+
 int main(int argc, char **argv){
     std::string name;
     //input the name
-    std::cin>>name;
+
     // 初始化ROS节点
-    ros::init(argc, argv, name);
+    ros::init(argc, argv, "client",ros::init_options::AnonymousName);
     // 创建节点句柄
     ros::NodeHandle n;
+    name = ros::this_node::getName();
     // 初始化client::show的请求数据
     srv.request.request = 1;
     srv.request.name = name;
@@ -50,8 +55,13 @@ int main(int argc, char **argv){
 
         loop_rate.sleep();
     }
+    srv.request.request=10;
+    service_client.call(srv);
+    ROS_INFO("Quit!");
+    ros::shutdown();
     return 0;
 }
+/*
 void interrupt_handler(int x)
 {
     srv.request.request=10;
@@ -59,6 +69,6 @@ void interrupt_handler(int x)
     ROS_INFO("delete the subscriber.");
     flag_ros = 0;
 }
-
+*/
 
 
