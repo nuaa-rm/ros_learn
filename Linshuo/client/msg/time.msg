@@ -5,5 +5,5 @@ uint8 hour
 uint8 minute
 uint8 second
 uint64 sec
-
+string timer
 string name

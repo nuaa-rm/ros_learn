@@ -5,15 +5,17 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 client::show srv;
-std::vector<ros::Subscriber> server_subscribers;
-std::vector<ros::Subscriber>::iterator it;
+vector<ros::Subscriber> server_subscribers;
+vector<ros::Subscriber>::iterator it;
 ros::ServiceServer service_server;
 
 void time_callback(const client::time::ConstPtr& time)
 {
     // 将接收到的消息打印出来
-    ROS_INFO("client_name:%s   time:%d.%d.%d %d:%d:%d ", time->name.c_str(), time->year, time->month, time->day, time->hour, time->minute, time->second);
+    ROS_INFO("client_name:%s   time:%s", time->name.c_str(), time->timer.c_str());
 }
 
 // service回调函数，输入参数request，输出参数response
@@ -32,7 +34,7 @@ bool show_callback(client::show::Request &request, client::show::Response &respo
 
         for(it = server_subscribers.begin(); it!=server_subscribers.end(); it++)
         {
-            std::string assist_sig = "/";
+            string assist_sig = "/";
             if(assist_sig + request.node_name.c_str() == it->getTopic())
             it->shutdown();
             server_subscribers.erase(it);

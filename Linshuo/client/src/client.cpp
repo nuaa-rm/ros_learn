@@ -8,8 +8,12 @@
 #include <unistd.h>
 
 #include <ctime>
+#include <chrono>
 #include <cstring>
 #include <iostream>
+
+using namespace std;
+using namespace std::chrono;
 
 ros::ServiceClient service_client;
 client::show srv;
@@ -18,7 +22,7 @@ void interrupt_handler(int x);
 
 int main(int argc, char** argv)
 {
-    std::string main_name;
+    string main_name;
 
     // 初始化ROS节点
     ros::init(argc, argv, "node", ros::init_options::AnonymousName);
@@ -70,20 +74,26 @@ int main(int argc, char** argv)
     while (ros::ok())
     {
         // 初始化client::time类型的消息
-        //ros::Time now = ros::Time::now();
+//        ros::Time now = ros::Time::now();
         client::time time_msg;
 
-        time_t time_seconds = time(0);
-        struct tm now_time;
-        localtime_r(&time_seconds, &now_time);
+//        time_t time_seconds = time(0);
+//        struct tm now_time;
+//        localtime_r(&time_seconds, &now_time);
 
-        //time_msg.sec = now.toSec();
-        time_msg.year = now_time.tm_year + 1900;
-        time_msg.month = now_time.tm_mon + 1;
-        time_msg.day = now_time.tm_mday;
-        time_msg.hour = now_time.tm_hour;
-        time_msg.minute = now_time.tm_min;
-        time_msg.second = now_time.tm_sec;
+//        time_msg.sec = now.toSec();
+//        time_msg.year = now_time.tm_year + 1900;
+//        time_msg.month = now_time.tm_mon + 1;
+//        time_msg.day = now_time.tm_mday;
+//        time_msg.hour = now_time.tm_hour;
+//        time_msg.minute = now_time.tm_min;
+//        time_msg.second = now_time.tm_sec;
+
+        system_clock::time_point today = system_clock::now();
+        time_t tm = system_clock::to_time_t(today);
+
+        time_msg.timer = ctime(&tm);
+        time_msg.timer.pop_back();
         time_msg.name = main_name;
 
         // 发布消息
@@ -104,4 +114,3 @@ void interrupt_handler(int x)
     ROS_INFO("Had quited the subscriber.");
     ros::shutdown();
 }
-.
