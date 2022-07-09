@@ -32,12 +32,16 @@ bool show_callback(client::show::Request &request, client::show::Response &respo
     {
         ROS_INFO("A client: %s has logged out!", request.node_name.c_str());
 
-        for(it = server_subscribers.begin(); it!=server_subscribers.end();)
+        for(it = server_subscribers.begin(); it!=server_subscribers.end(); it++)
         {
             string assist_sig = "/";
             if(assist_sig + request.node_name.c_str() == it->getTopic())
-            it->shutdown();
-            it = server_subscribers.erase(it);
+            {
+                it->shutdown();
+                server_subscribers.erase(it);
+                break;
+            }
+
         }
 //        for(auto &each_subscriber : server_subscribers)
 //        {
