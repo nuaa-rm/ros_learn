@@ -12,9 +12,6 @@
 ros::ServiceClient service_client;
 client::login login_service_message;
 
-void interrupt_handler(int x);
-bool running_flag = 1;
-
 int main(int argc, char **argv) {
     std::string main_name;
     bool logged = 0;
