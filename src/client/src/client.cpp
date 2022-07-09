@@ -7,7 +7,7 @@
 #include <signal.h>
 #include <unistd.h>
 
-//#include <chrono>
+
 #include <ctime>
 #include <cstring>
 #include <iostream>
@@ -19,8 +19,7 @@ void interrupt_handler(int x);
 
 int main(int argc, char** argv)
 {
-    //using namespace std;
-    //using namespace std::chrono;
+
     std::string name;
     ros::init(argc, argv, "auto_node_name", ros::init_options::AnonymousName);
 
@@ -42,8 +41,7 @@ int main(int argc, char** argv)
     while (ros::ok())
     {
     client::time time_msg;
-    //system_clock::time_point now = system_clock::now();
-    //time_t tt = system_clock::to_time_t(now);
+
     using namespace std;
     time_t t = time(0);
     char tmp[32]={NULL};

@@ -14,7 +14,6 @@ void time_callback(const client::time::ConstPtr& time)
     ROS_INFO("name:%s   time:%s ", time->name.c_str(), time->sec.c_str());
 }
 
-// service回调函数，输入参数request，输出参数response
 bool show_callback(client::show::Request &request, client::show::Response &response)
 {
     if(request.request == 1) 
