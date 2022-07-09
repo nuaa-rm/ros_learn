@@ -45,7 +45,8 @@ bool login_handle(client::login::Request &req, client::login::Response &ack) {
 }
 
 int main(int argc, char **argv) {
-    ros::init(argc, argv, "ros_learn_server");
+    ros::init(argc, argv, "ros_learn_server",
+              ros::init_options::AnonymousName);
     ros::NodeHandle server_node_handle;
     server_subscribers.push_back(
             server_node_handle.subscribe(

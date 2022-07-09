@@ -13,10 +13,9 @@ ros::ServiceClient service_client;
 client::login login_service_message;
 
 int main(int argc, char **argv) {
-    std::string main_name;
     bool logged = 0;
-    std::cin>>main_name;
-    ros::init(argc, argv, main_name);
+    ros::init(argc, argv, "ros_learn_client",
+              ros::init_options::AnonymousName);
     ros::NodeHandle client_node_handle;
 
     client::current_time publishing_msg;
@@ -49,7 +48,7 @@ int main(int argc, char **argv) {
     while (ros::ok()) {
         time(&time_seconds);
         localtime_r(&time_seconds, &now_time);
-        publishing_msg.name = main_name;
+        publishing_msg.name = ros::this_node::getName();
         publishing_msg.year = now_time.tm_year + 1900;
         publishing_msg.month = now_time.tm_mon + 1;
         publishing_msg.day = now_time.tm_mday;
