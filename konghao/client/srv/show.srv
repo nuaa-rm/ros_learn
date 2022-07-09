@@ -1,4 +1,0 @@
-uint8 request
-string node_name
----
-uint8 response

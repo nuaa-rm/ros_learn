@@ -1,2 +1,0 @@
-string sec
-string name
