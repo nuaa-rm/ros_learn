@@ -21,7 +21,8 @@ int main(int argc, char **argv) {
 
     client::current_time publishing_msg;
     ros::Publisher client_publisher =
-            client_node_handle.advertise<client::current_time>(ros::this_node::getName(), 1);
+            client_node_handle.advertise<client::current_time>(
+                    ros::this_node::getName(), 1);
 
     service_client =
             client_node_handle.serviceClient<client::login>(
