@@ -16,8 +16,6 @@ ros::ServiceClient service_client;
 client::show srv;
 
 void interrupt_handler(int x);
-bool flag = 1;
-
 
 int main(int argc, char** argv)
 {
@@ -41,7 +39,7 @@ int main(int argc, char** argv)
 
     signal(SIGINT, interrupt_handler);
 
-    while (ros::ok()&&flag)
+    while (ros::ok())
     {
     client::time time_msg;
     //system_clock::time_point now = system_clock::now();
@@ -61,12 +59,11 @@ int main(int argc, char** argv)
     return 0;
 }
 
-
 void interrupt_handler(int x) 
 {
     srv.request.request=10;
     service_client.call(srv);
     ROS_INFO("Logged out!");
-    flag = 0;
+    ros::shutdown();
 }
 
