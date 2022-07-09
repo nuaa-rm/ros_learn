@@ -24,10 +24,9 @@ int main(int argc, char** argv)
     //using namespace std;
     //using namespace std::chrono;
     std::string name;
-    ROS_INFO("Input name:");
-    std::cin>>name;
+    ros::init(argc, argv, "auto_node_name", ros::init_options::AnonymousName);
 
-    ros::init(argc, argv, name);
+    name = ros::this_node::getName();
     ros::NodeHandle n;
     srv.request.request = 1;
     srv.request.node_name = name;

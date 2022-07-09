@@ -6,7 +6,6 @@
 #include <iostream>
 
 client::show srv;
-ros::NodeHandle *n_pointer = NULL;
 std::vector<ros::Subscriber> server_subscribers;
 ros::ServiceServer service_server;
 
@@ -22,7 +21,8 @@ bool show_callback(client::show::Request &request, client::show::Response &respo
     {
         ROS_INFO("A client has logged in!");
         response.response = 10;
-        server_subscribers.push_back(n_pointer->subscribe(request.node_name, 10, time_callback));
+        ros::NodeHandle n;
+        server_subscribers.push_back(n.subscribe(request.node_name, 10, time_callback));
     }
     else
     {
@@ -37,6 +37,8 @@ bool show_callback(client::show::Request &request, client::show::Response &respo
                 each_subscriber.shutdown();
             }
         }
+
+        server_subscribers.clear();
         response.response = 20;
     }
     return true;
@@ -46,7 +48,6 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "server");
     ros::NodeHandle n;
-    n_pointer = &n;
     ROS_INFO("Server initialized!");
 
     service_server = n.advertiseService("/show_info", show_callback);
