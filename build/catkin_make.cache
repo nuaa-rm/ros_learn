@@ -1,2 +1,0 @@
-client:server
--DCATKIN_DEVEL_PREFIX=/home/andykong/roslearn_remote/ros_learn/devel -DCMAKE_INSTALL_PREFIX=/home/andykong/roslearn_remote/ros_learn/install -G Unix Makefiles

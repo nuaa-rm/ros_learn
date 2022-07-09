@@ -1,8 +1,0 @@
-prefix=/home/andykong/roslearn_remote/ros_learn/devel
-
-Name: server
-Description: Description of server
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp rospy std_msgs std_srvs message_runtime

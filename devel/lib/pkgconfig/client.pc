@@ -1,8 +1,0 @@
-prefix=/home/andykong/roslearn_remote/ros_learn/devel
-
-Name: client
-Description: Description of client
-Version: 0.0.0
-Cflags: -I/home/andykong/roslearn_remote/ros_learn/devel/include
-Libs: -L${prefix}/lib 
-Requires: roscpp rospy std_msgs std_srvs message_runtime
