@@ -7,8 +7,6 @@
 #include <vector>
 
 #include <iostream>
-
-ros::NodeHandle *server_node_handle_pointer = NULL;
 ros::ServiceServer service_server;
 std::vector<ros::Subscriber> server_subscribers;
 
@@ -28,9 +26,10 @@ bool login_handle(client::login::Request &req, client::login::Response &ack) {
     if(req.req_code == 1) {
         ROS_INFO("A client: %s has logged in!", req.node_name.c_str());
         ack.ack_code = 10;
+        ros::NodeHandle server_logging_handle;
         server_subscribers.push_back(
-                (*server_node_handle_pointer).subscribe(
-                        req.node_name, 1, time_callback));
+                        server_logging_handle.subscribe(
+                                req.node_name, 1, time_callback));
     }else{
         ROS_INFO("A client: %s has logged out!", req.node_name.c_str());
         for(auto &each_subscriber : server_subscribers){
@@ -47,8 +46,6 @@ bool login_handle(client::login::Request &req, client::login::Response &ack) {
 int main(int argc, char **argv) {
     ros::init(argc, argv, "ros_learn_server");
     ros::NodeHandle server_node_handle;
-    server_node_handle_pointer = & server_node_handle;
-
     server_subscribers.push_back(
             server_node_handle.subscribe(
                     "client_pub_current_time", 1, time_callback));
