@@ -59,8 +59,8 @@ int main(int argc, char **argv) {
         client_publisher.publish(publishing_msg);
         loop_rate.sleep();
     }
+    ROS_INFO("Quit!");
     login_service_message.request.req_code=10;
     service_client.call(login_service_message);
-    ROS_INFO("Quit!");
     return 0;
 }
