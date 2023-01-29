@@ -1,11 +1,11 @@
 //
 // Created by mijiao on 23-1-28.
 //
-#include <csignal>
-#include <string>
-#include <ros/ros.h>
 #include <client/message.h>
 #include <server/service.h>
+#include <ros/ros.h>
+#include <csignal>
+#include <string>
 
 
 ros::ServiceClient *clientp = nullptr;
@@ -42,7 +42,8 @@ int main(int argc, char **argv) {
         msg.name = ros::this_node::getName();
         msg.time = ros::Time::now();
         pub.publish(msg);
-        ROS_INFO("Sending: %s %d.%d", msg.name.c_str(), msg.time.sec, msg.time.nsec);
+        ROS_INFO("Sending: %s %d.%d", msg.name.c_str(), msg.time.sec,
+                 msg.time.nsec);
         ros::spinOnce();
         rate.sleep();
     }
