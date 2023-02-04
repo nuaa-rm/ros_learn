@@ -8,15 +8,15 @@
 #include <string>
 
 
-ros::ServiceClient *clientp = nullptr;
-
 void SigintHandler(int sig) {
+    ros::NodeHandle nh;
+    ros::ServiceClient client = nh.serviceClient<server::service>("service");
     if (sig == SIGINT) {
         ROS_INFO("Exiting...");
         server::service srv;
         srv.request.id = 1;
         srv.request.name = ros::this_node::getName();
-        clientp->call(srv);
+        client.call(srv);
         ros::shutdown();
     }
 }
@@ -31,7 +31,6 @@ int main(int argc, char **argv) {
     signal(SIGINT, SigintHandler);
     ros::Publisher pub = nh.advertise<client::message>(name, 1000);
     ros::ServiceClient client = nh.serviceClient<server::service>("service");
-    clientp = &client;
     server::service srv;
     srv.request.id = 0;
     srv.request.name = name;

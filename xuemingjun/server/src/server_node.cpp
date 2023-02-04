@@ -9,7 +9,6 @@
 
 
 std::map<std::string, ros::Subscriber> sublist;
-ros::NodeHandle *nhp = nullptr;
 
 void topicCallBack(const client::message::ConstPtr &msg) {
     ROS_INFO("From %s received: %d.%d", msg->name.c_str(), msg->time.sec,
@@ -17,10 +16,11 @@ void topicCallBack(const client::message::ConstPtr &msg) {
 }
 
 bool serviceCallback(server::serviceRequest &req, server::serviceResponse &) {
+    ros::NodeHandle nh;
     if (req.id == 0) {
         sublist.insert(
                 std::pair<std::string, ros::Subscriber>(req.name,
-                                                        nhp->subscribe(req.name,
+                                                        nh.subscribe(req.name,
                                                                        1000,
                                                                        topicCallBack)));
     } else if (req.id == 1) {
@@ -36,7 +36,6 @@ bool serviceCallback(server::serviceRequest &req, server::serviceResponse &) {
 int main(int argc, char **argv) {
     ros::init(argc, argv, "service");
     ros::NodeHandle nh;
-    nhp = &nh;
     ros::ServiceServer server = nh.advertiseService("service", serviceCallback);
     ros::spin();
     return 0;
