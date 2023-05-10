@@ -15,8 +15,15 @@ void chatterCallback(const client::message::ConstPtr &msg){
 bool SeekTopic(server::service::Request &req,
                server::service::Response &res){
     ros::NodeHandle n;
-    ROS_INFO("service open");
-    sub = n.subscribe(req.name, 1000, chatterCallback);
+    if (req.status == 1){
+        ROS_INFO("service open");
+        sub = n.subscribe(req.name, 1000, chatterCallback);
+    } else if (req.status == 0){
+        sub.shutdown();
+        ROS_INFO("exit...");
+    } else {
+        ROS_INFO("something wrong happen");
+    }
 
     return true;
 }
