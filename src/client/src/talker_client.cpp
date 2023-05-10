@@ -1,8 +1,8 @@
+#include <string>
+#include <signal.h>
 #include "ros/ros.h"
 #include "client/message.h"
 #include "server/service.h"
-#include <string>
-#include <signal.h>
 
 void MySigintHandler(int sig)
 {

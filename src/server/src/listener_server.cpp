@@ -1,10 +1,10 @@
 //
 // Created by wenhao on 23-5-9.
 //
+#include <string>
 #include "ros/ros.h"
 #include "server/service.h"
 #include "client/message.h"
-#include <string>
 
 ros::Subscriber sub;
 
@@ -34,6 +34,5 @@ int main (int argc, char **argv){
     ros::ServiceServer service = n.advertiseService("service", SeekTopic);
     ROS_INFO("wait for service request")
     ros::spin();
-
     return 0;
 }
