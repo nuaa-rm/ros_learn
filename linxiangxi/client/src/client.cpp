@@ -1,4 +1,5 @@
 #include <ros/ros.h>
+#include <csignal>
 #include <client/client_message.h>
 #include <client/client_login.h>
 
@@ -10,6 +11,23 @@
 #define SUCCESS 3
 #define FAILED 4
 
+client::client_login * login_service_ptr = nullptr;
+ros::ServiceClient * client_login_ptr = nullptr;
+
+void signal_handler(int signal){
+    ROS_INFO("logout");
+    (*login_service_ptr).request.require_code = LOGOUT;
+    (*login_service_ptr).response.answer_code = NUL;
+    while(true){
+        if((*client_login_ptr).call(*login_service_ptr)){
+            if((*login_service_ptr).response.answer_code == SUCCESS){
+                break;
+            }
+        }
+    }
+    ros::shutdown();
+}
+
 int main(int argc, char ** argv){
     ros::init(argc, argv, "client", ros::init_options::AnonymousName);
     ros::NodeHandle client_node_handle;
@@ -18,6 +36,8 @@ int main(int argc, char ** argv){
     client::client_login login_service;
     client::client_message message;
     ros::Rate loop(1.0);
+    client_login_ptr = &client_login;
+    login_service_ptr = &login_service;
 
     login_service.request.name = ros::this_node::getName();
     login_service.request.require_code = LOGIN;
@@ -36,17 +56,13 @@ int main(int argc, char ** argv){
     }
     ROS_INFO("login success");
 
+    signal(SIGINT, signal_handler);
     message.name = ros::this_node::getName();
     while(ros::ok()){
         message.current_time = ros::Time::now();
         client_pub.publish(message);
         loop.sleep();
     }
-
-    login_service.request.name = ros::this_node::getName();
-    login_service.request.require_code = LOGOUT;
-    login_service.response.answer_code = NUL;
-    ROS_INFO("logout");
 
     return 0;
 }

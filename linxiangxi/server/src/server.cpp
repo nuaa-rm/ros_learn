@@ -36,10 +36,11 @@ bool client_login(client::client_login::Request & req, client::client_login::Res
         client_storage.push_back(info);
         res.answer_code = SUCCESS;
     }
-    else if(req.require_code == LOGOUT){
+    else{
         ROS_INFO("logout request from %s", req.name.c_str());
         for(auto it = client_storage.begin(); it < client_storage.end(); it++){
             if(it -> client_name == req.name){
+                client_storage.erase(it);
                 it -> client_sub.shutdown();
             }
         }
