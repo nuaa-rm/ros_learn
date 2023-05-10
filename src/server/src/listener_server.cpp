@@ -32,7 +32,7 @@ int main (int argc, char **argv){
     ros::init(argc, argv, "server");
     ros::NodeHandle n;
     ros::ServiceServer service = n.advertiseService("service", SeekTopic);
-
+    ROS_INFO("wait for service request")
     ros::spin();
 
     return 0;

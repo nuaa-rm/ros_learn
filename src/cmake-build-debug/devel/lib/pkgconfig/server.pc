@@ -1,8 +1,0 @@
-prefix=/home/wenhao/ros_learn/src/cmake-build-debug/devel
-
-Name: server
-Description: Description of server
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
