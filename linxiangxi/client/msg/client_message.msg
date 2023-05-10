@@ -1,0 +1,2 @@
+string name
+time current_time

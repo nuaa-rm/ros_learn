@@ -1,0 +1,4 @@
+uint16 require_code
+string name
+---
+uint16 answer_code
