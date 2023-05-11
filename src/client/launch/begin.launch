@@ -1,0 +1,10 @@
+<launch>
+ 
+<node
+ 
+  pkg="client" type="talker_client" name="client" output="screen"
+ 
+/>
+ 
+</launch>
+
