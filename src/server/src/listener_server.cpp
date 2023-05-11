@@ -30,7 +30,7 @@ bool SeekTopic(server::service::Request &req,
 
 int main (int argc, char **argv){
     ros::init(argc, argv, "server");
-    ROS_INFO("wait for service request")
+    ROS_INFO("wait for service request");
     ros::NodeHandle n;
     ros::ServiceServer service = n.advertiseService("service", SeekTopic);
     ros::spin();
