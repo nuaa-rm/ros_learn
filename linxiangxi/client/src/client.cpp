@@ -1,7 +1,7 @@
 #include <ros/ros.h>
-#include <csignal>
 #include <client/client_message.h>
 #include <client/client_login.h>
+#include <csignal>
 
 #define PUBLISHER_SIZE 10
 
@@ -31,8 +31,16 @@ void signal_handler(int signal){
 int main(int argc, char ** argv){
     ros::init(argc, argv, "client", ros::init_options::AnonymousName);
     ros::NodeHandle client_node_handle;
-    ros::Publisher client_pub = client_node_handle.advertise<client::client_message>(ros::this_node::getName(), PUBLISHER_SIZE);
-    ros::ServiceClient client_login = client_node_handle.serviceClient<client::client_login>("client_login");
+
+    ros::Publisher client_pub =
+        client_node_handle.advertise<client::client_message>(
+            ros::this_node::getName(),
+            PUBLISHER_SIZE
+            );
+
+    ros::ServiceClient client_login =
+        client_node_handle.serviceClient<client::client_login>("client_login");
+
     client::client_login login_service;
     client::client_message message;
     ros::Rate loop(1.0);
