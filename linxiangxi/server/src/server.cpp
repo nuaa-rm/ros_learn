@@ -52,8 +52,9 @@ bool client_login(
         ROS_INFO("logout request from %s", req.name.c_str());
         for(auto it = client_storage.begin(); it < client_storage.end(); it++){
             if(it -> client_name == req.name){
-                client_storage.erase(it);
                 it -> client_sub.shutdown();
+                client_storage.erase(it);
+                break;
             }
         }
         res.answer_code = SUCCESS;
