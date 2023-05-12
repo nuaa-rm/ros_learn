@@ -23,7 +23,7 @@ std::vector<Client_info> client_storage;
 void client_message_callback(const client::client_message & client_message){
     char output_tmp[100];
     time_t _time = client_message.current_time.sec;
-    strftime(output_tmp, sizeof(output_tmp), 
+    strftime(output_tmp, sizeof(output_tmp),
         "%Y-%m-%d %H:%M:%S", localtime(&_time));
     ROS_INFO("name: %s, time: %s", client_message.name.c_str(), output_tmp);
 }
