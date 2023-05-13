@@ -1,3 +1,4 @@
 string topicname
+int16 login
 ---
 string name
