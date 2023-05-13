@@ -142,7 +142,7 @@ add_executable(client src/client.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(client client_generate_messages_cpp)
+add_dependencies(client ${PROJECT_NAME}_gencpp)
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(client

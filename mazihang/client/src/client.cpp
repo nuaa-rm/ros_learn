@@ -1,38 +1,43 @@
 #include "ros/ros.h"
 #include "client/time.h"
-
-#include "time.h"
+#include "client/client.h"
 #include <iostream>
+#include <string>
 
 int main(int argc, char** argv)
 {
-    struct tm *local;
-    time_t t;
-    t=time(NULL);
-    local=localtime(&t);
-
-    ros::init(argc,argv,"client");
+    ros::init(argc , argv , "client", ros::init_options::AnonymousName);
 
     ros::NodeHandle n;
 
-    ros::Publisher pub=n.advertise<client::time>("client",1000);
+    ros::Publisher pub=n.advertise<client::time>("client", 1000);
+    ros::ServiceClient client= n.serviceClient<client::client>("client");
 
-    client::time time0;
-    time0.name="client";
-    time0.year=local->tm_year+1900;
-    time0.month=local->tm_mon+1;
-    time0.day=local->tm_mday;
-    time0.hour=local->tm_hour;
-    time0.minute=local->tm_min;
-    time0.second=local->tm_sec;
+    client::client name;
+    name.request.topicname="client";
+    name.request.login=1;
 
-    ros::Rate rate(1);
+    client::time time;
+    time.name="client";
+    time.timenow=ros::Time::now();
+
+    ros::Rate loop_rate(1);
+
+    if(client.call(name)){
+        ROS_INFO("Find");
+    }
+    else{
+        ROS_INFO("NOT FOUND");
+    }
 
     while(ros::ok()){
-        pub.publish(time0);
-        rate.sleep();
-        ros::spin();
+        pub.publish(time);
+        ros::spinOnce();
+        loop_rate.sleep();
     }
+
+    name.request.login=0;
+    client.call(name);
 
     return 0;
 }
