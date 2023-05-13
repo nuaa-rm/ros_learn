@@ -1,4 +1,4 @@
-#ifndef __STATUS_CODE_H__
+#ifndef LINXIANGXI_CLIENT_INCLUDE_CLIENT_STATUS_CODE_H_
 #define __STATUS_CODE_H__
 
 typedef enum{
@@ -11,4 +11,4 @@ typedef enum{
     FAILED,
 }Answer_code;
 
-#endif
+#endif // LINXIANGXI_CLIENT_INCLUDE_CLIENT_STATUS_CODE_H_
