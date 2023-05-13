@@ -1,55 +1,63 @@
 #include <ros/ros.h>
 #include <client/client_message.h>
 #include <client/client_login.h>
+#include <client/status_code.h>
 #include <csignal>
 
 #define PUBLISHER_SIZE 10
-
-#define LOGIN 0
-#define LOGOUT 1
-#define NUL 2
-#define SUCCESS 3
-#define FAILED 4
-
-client::client_login * login_service_ptr = nullptr;
-ros::ServiceClient * client_login_ptr = nullptr;
+#define LOGOUT_TRY_TIMES 3
 
 void signal_handler(int signal){
     ROS_INFO("logout");
-    (*login_service_ptr).request.require_code = LOGOUT;
-    (*login_service_ptr).response.answer_code = NUL;
-    while(true){
-        if((*client_login_ptr).call(*login_service_ptr)){
-            if((*login_service_ptr).response.answer_code == SUCCESS){
+    ros::NodeHandle node_handle = ros::NodeHandle("~");
+
+    ros::ServiceClient client_login =
+        node_handle.serviceClient<client::client_login>("/client_login");
+
+    client::client_login login_service;
+    ros::Rate loop(1.0);
+    login_service.request.name = ros::this_node::getName();
+    login_service.request.require_code = LOGOUT;
+    int try_times;
+    for(try_times = 0; try_times < LOGOUT_TRY_TIMES; try_times++){
+        if(client_login.call(login_service)){
+            if(login_service.response.answer_code == SUCCESS){
+                ROS_INFO("logout success");
+                break;
+            }
+            else{
+                ROS_INFO("logout failed");
                 break;
             }
         }
+        ROS_INFO("logout failed, try again");
+        loop.sleep();
+    }
+    if(try_times == LOGOUT_TRY_TIMES){
+        ROS_INFO("lose connection with server");
     }
     ros::shutdown();
 }
 
 int main(int argc, char ** argv){
     ros::init(argc, argv, "client", ros::init_options::AnonymousName);
-    ros::NodeHandle client_node_handle;
+    ros::NodeHandle node_handle = ros::NodeHandle("~");
 
     ros::Publisher client_pub =
-        client_node_handle.advertise<client::client_message>(
-            ros::this_node::getName(),
+        node_handle.advertise<client::client_message>(
+            "",
             PUBLISHER_SIZE
             );
 
     ros::ServiceClient client_login =
-        client_node_handle.serviceClient<client::client_login>("client_login");
+        node_handle.serviceClient<client::client_login>("/client_login");
 
     client::client_login login_service;
     client::client_message message;
     ros::Rate loop(1.0);
-    client_login_ptr = &client_login;
-    login_service_ptr = &login_service;
 
     login_service.request.name = ros::this_node::getName();
     login_service.request.require_code = LOGIN;
-    login_service.response.answer_code = NUL;
     while(true){
         if(client_login.call(login_service)){
             if(login_service.response.answer_code == SUCCESS){
