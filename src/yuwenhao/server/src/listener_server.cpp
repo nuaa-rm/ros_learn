@@ -6,10 +6,11 @@
 #include "server/service.h"
 #include "client/message.h"
 
-ros::Subscriber sub;
+
+std::map<std::string, ros::Subscriber> clients;
 
 void chatterCallback(const client::message::ConstPtr &msg){
-    ROS_INFO("%d %s", msg->time.sec, msg->name.c_str() );
+    ROS_INFO("get time: %d from client: %s", msg->time.sec, msg->name.c_str() );
 }
 
 bool SeekTopic(server::service::Request &req,
@@ -17,9 +18,11 @@ bool SeekTopic(server::service::Request &req,
     ros::NodeHandle n;
     if (req.status == 1){
         ROS_INFO("service open");
-        sub = n.subscribe(req.name, 1000, chatterCallback);
+        ros::Subscriber sub = n.subscribe(req.name, 1000, chatterCallback);
+        clients.emplace(req.name, sub);
     } else if (req.status == 0){
-        sub.shutdown();
+        clients[req.name].shutdown();
+        clients.erase(req.name);
         ROS_INFO("exit...");
     } else {
         ROS_INFO("something wrong happen");
