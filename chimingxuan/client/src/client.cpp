@@ -1,17 +1,18 @@
 #include "ros/ros.h"
+#include "std_msgs/String.h"
 #include "server/Register.h"
 #include "server/Unregister.h"
-#include "std_msgs/String.h"
-
-#include <sstream>
-
-#include <ctime>
 
 #include <signal.h>
 
+#include <sstream>
+#include <ctime>
+
+
 void Unregister(int sig){
     ros::NodeHandle n;
-    ros::ServiceClient client_unregister = n.serviceClient<server::Unregister>("unregister");
+    ros::ServiceClient client_unregister =
+            n.serviceClient<server::Unregister>("unregister");
     server::Unregister unregister_srv;
     std::string client_name = ros::this_node::getName();
     unregister_srv.request.name = client_name;
@@ -36,7 +37,8 @@ int main(int argc, char **argv)
     std::string client_name = ros::this_node::getName();
     std::string topic = client_name;
 
-    ros::ServiceClient client_register = n.serviceClient<server::Register>("register");
+    ros::ServiceClient client_register =
+            n.serviceClient<server::Register>("register");
     server::Register register_srv;
     register_srv.request.name = topic;
 
